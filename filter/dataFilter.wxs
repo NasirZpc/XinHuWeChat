@@ -1,0 +1,49 @@
+var DataFr = {
+    getDate: function(time, splitStr) {
+
+        if (!time) return '';
+
+        var date = getDate(time);
+        var M = date.getMonth() + 1;
+        var y = date.getFullYear();
+        var d = date.getDate();
+
+        if (M < 10) M = "0" + M;
+        if (d < 10) d = "0" + d;
+
+        if (splitStr)
+            return y + splitStr + M + splitStr + d;
+        else
+            return {
+                y: y,
+                M: M,
+                d: d
+            };
+    },
+    getText: function(textData, len) {
+        if (!textData) return '';
+        return DataFr._subString(textData, len)
+    },
+    _subString: function(str, len) {
+        var regexp = getRegExp('/[^\x00-\xff]/g') // 正在表达式匹配中文
+        // 当字符串字节长度小于指定的字节长度时
+        if (str.replace(regexp, "aa").length+str.replace(regexp, "a").length <= len) {
+            return str;
+        }
+        // 假设指定长度内都是中文
+        var m = Math.floor(len / 2);
+        var i = m;
+        for ( j = str.length; i < j; i++) {
+            // 当截取字符串字节长度满足指定的字节长度
+            if (str.substring(0, i).replace(regexp, "aa").length > len) {
+                return str.substring(0, i-1) + '...';
+            }
+        }
+        return str;
+    }
+}
+
+module.exports = {
+    getDate: DataFr.getDate,
+    getText: DataFr.getText
+}

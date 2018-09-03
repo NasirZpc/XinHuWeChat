@@ -1,0 +1,52 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/cityShopping/cityShopping",
+        "pages/xinFind/xinFind",
+        "pages/shoppingCar/shoppingCar",
+        "pages/mine/mine"
+    ],
+    "window": {
+        "navigationBarTitleText": "信户商城",
+        "navigationBarBackgroundColor":"#ff5c00",
+        "backgroundColor": "#f4f4f4",
+        "backgroundTextStyle": "drak"
+    },
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "icon/index.png",
+                "selectedIconPath": "icon/indexAct.png"
+            },
+            {
+                "pagePath": "pages/cityShopping/cityShopping",
+                "text": "同城购",
+                "iconPath": "icon/city.png",
+                "selectedIconPath": "icon/cityAct.png"
+            },
+            {
+                "pagePath": "pages/xinFind/xinFind",
+                "text": "信发现",
+                "iconPath": "icon/find.png",
+                "selectedIconPath": "icon/findAct.png"
+            },
+            {
+                "pagePath": "pages/shoppingCar/shoppingCar",
+                "text": "购物车",
+                "iconPath": "icon/shoppingC.png",
+                "selectedIconPath": "icon/shoppingCAct.png"
+            },
+            {
+                "pagePath": "pages/mine/mine",
+                "text": "我的",
+                "iconPath": "icon/mine.png",
+                "selectedIconPath": "icon/mineAct.png"
+            }
+        ],
+        "color":"#666",
+        "selectedColor":"#ff5c00",
+        "backgroundColor" : "#fff"
+    }
+}

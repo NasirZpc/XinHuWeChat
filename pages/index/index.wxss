@@ -1,0 +1,95 @@
+/*首页搜索*/
+.indexSearchWrap{
+    background: rgba(255,92,0,0.7);
+    width:90%;
+    height:60rpx;
+    z-index:10;
+    top:15rpx;
+    left:5%;
+    line-height:60rpx;
+    border-radius: 60rpx;
+    overflow: hidden;
+}
+.indexSearchWrap image{
+    width:30rpx;
+    height:30rpx;
+    top:-11rpx;
+}
+/*banner*/
+swiper{
+    height:350rpx;
+}
+.slide-image{
+    width:100%;
+    height:350rpx;
+}
+
+/*快速入口*/
+.fastEnterItem{
+    width:20%;
+}
+.fastEnterItem image{
+    width:70rpx;
+    height:70rpx;
+}
+.fastEnterItem2{
+    width:25%;
+}
+.fastEnterItem2 image{
+    width:130rpx;
+    height:130rpx;
+}
+
+/*大家都在买*/
+.indexTit>.bgF{
+    width:240rpx;
+    z-index: 2;
+    margin:0 auto;
+}
+.indexTitIcon{
+    width:38rpx;
+    height:38rpx;
+    border-radius: 50%;
+    top:8rpx;
+}
+.indexTitIcon image{
+    width: 23rpx;
+    height:23rpx;
+    margin:8rpx auto 0;
+}
+.indexTitLine{
+    height:1rpx;
+    width:44%;
+    top:50rpx;
+    left:28%;
+    z-index: 1;
+}
+/*店铺推荐*/
+.recommendStoreTit{
+    line-height: 32rpx;
+    border-bottom:1px solid #f4f4f4;
+}
+.recommendStoreTit image.storeIcon{
+    width:34rpx;
+    height:34rpx;
+}
+.recommendStoreTit image.rightIcon{
+    width:28rpx;
+    height:28rpx;
+    top:-1rpx;
+}
+.recommendStoreItem{
+    width:49%;
+    margin-right:2%;
+}
+.recommendStoreItem:nth-of-type(2n){
+    margin-right:0;
+}
+.recommendStoreItem:nth-of-type(3),.recommendStoreItem:nth-of-type(4){
+    margin-bottom:0;
+}
+.recommendStoreItem>image{
+    width:116rpx;
+    height:116rpx;
+    border-radius:6rpx;
+}

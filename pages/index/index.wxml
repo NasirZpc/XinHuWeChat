@@ -1,0 +1,99 @@
+<wxs module="dataFilter" src="../../filter/dataFilter.wxs"></wxs>
+<!-- 搜索框 -->
+<view class="fix indexSearchWrap tc" bindtap="goSearchEnter">
+    <image class="rel mr10" src="../../icon/search.png" />
+    <view class="fs28 Cf inlineB">请输入搜索内容</view>
+</view>
+<!--轮播图-->
+<swiper class="banners" circular="true" indicator-dots="true"  interval="5000" duration="1000" indicator-active-color="#ff5c00">
+    <block wx:for="{{banners}}" wx:for-index="index" wx:key="key">
+        <swiper-item>
+            <navigator url="../cityShopping/cityShopping" class="block">
+                <image src="{{item.slide_pic}}" class="slide-image"/>
+            </navigator>
+        </swiper-item>
+    </block>
+</swiper>
+<!-- 快速入口 -->
+<view class="fastEnterLists clearfix bgF pb20">
+    <view wx:for="{{fastEnterLists}}" wx:for-index="index" wx:key="key" bindtap="goFastEnter" data-id="{{item.id}}" data-activityid="{{item.activityid}}" data-type="{{item.type}}" class="fastEnterItem fl tc mt20">
+        <image class="" src="{{item.pic}}" />
+        <view class="C6 fs24">{{item.name}}</view>
+    </view>
+</view>
+<!-- 快速入口2 -->
+<view class="fastEnterLists2 clearfix bgF pb20 pt20">
+    <view wx:for="{{fastEnterLists2}}" wx:for-index="index" wx:key="key" bindtap="goFastEnter2" data-id="{{item.id}}" data-cid="{{item.cid}}" class="fastEnterItem2 fl tc">
+        <image class="" src="{{item.img}}" />
+        <view class="C6 fs24">{{item.title}}</view>
+    </view>
+</view>
+<!-- 大家都在买 -->
+<view class="indexTit rel bgF tc pt20 pb20">
+    <view class="bgF rel">
+        <view class="indexTitIcon bgO rel tc inlineB mr15">
+            <image src="../../icon/hot.png" class="block" />
+        </view>
+        <text class="fs30 orange">大家都在买</text>
+    </view>
+    <view class="indexTitLine abs bgO"></view>
+</view>
+<view class="evboybuyLists comProLists clearfix mb10">
+    <view wx:for="{{evboybuyLists}}" wx:for-index="index" wx:key="key" bindtap="goProDetail" data-id="{{item.id}}" class="comProItem fl bgF mt10">
+        <view class="comProImageWrap">
+            <image class="" src="{{item.pic}}" />
+        </view>
+        <view class="comProContWrap p15">
+            <view class="fs26 C0 pb10">{{dataFilter.getText(item.productname,25)}}</view>
+            <view class="tr fs C9 fs24 pb10">{{item.placedelivery}}</view>
+            <view class="clearfix">
+                <view class="fl orange fs30">¥{{item.currentprice}}</view>
+                <view class="fr C6 fs24">{{item.sale}}件已售</view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 店铺推荐 -->
+<view class="recommendStoreTit pt20 bgF tc clearfix p15">
+    <view class="fl C3 fs26">店铺推荐</view>
+    <image class="fl storeIcon ml10" src="../../icon/store.png" />
+    <view class="fr">
+        <view class="fs26 C9 inlineB">更多</view>
+        <image class="rel rightIcon" src="../../icon/right.png"/>
+    </view>
+</view>
+<view class="recommendStoreLists bgF p15">
+    <view wx:for="{{recommendStoreLists}}" wx:for-index="index" wx:key="key" bindtap="goStoreDetail" data-id="{{item.id}}" class="recommendStoreItem mb25 fl clearfix">
+        <image class="mr15 fl" src="{{item.headimg}}" />
+        <view class="recommendStoreCont">
+            <view class="ellips C3 fs26 mb10">{{item.shopname}}</view>
+            <view class="fs24 C9">{{item.goods}}件商品</view>
+            <view class="fs24 C9">{{item.sales}}件已售</view>
+        </view>
+    </view>
+</view>
+<!-- 猜你喜欢 -->
+<view class="indexTit rel bgF tc pt20 pb20">
+    <view class="bgF rel">
+        <view class="indexTitIcon bgO rel tc inlineB mr15">
+            <image src="../../icon/like.png" class="block" />
+        </view>
+        <text class="fs30 orange">猜你喜欢</text>
+    </view>
+    <view class="indexTitLine abs bgO"></view>
+</view>
+<view class="evboybuyLists comProLists clearfix mb10">
+    <view wx:for="{{guesslikeLists}}" wx:for-index="index" wx:key="key" bindtap="goProDetail" data-id="{{item.id}}" class="comProItem fl bgF mt10">
+        <view class="comProImageWrap">
+            <image class="" src="{{item.pic}}" lazy-load="true"/>
+        </view>
+        <view class="comProContWrap p15">
+            <view class="fs26 C0 pb10">{{dataFilter.getText(item.productname,25)}}</view>
+            <view class="tr fs C9 fs24 pb10">{{item.placedelivery}}</view>
+            <view class="clearfix">
+                <view class="fl orange fs30">¥{{item.currentprice}}</view>
+                <view class="fr C6 fs24">{{item.sale}}件已售</view>
+            </view>
+        </view>
+    </view>
+</view>
