@@ -1,0 +1,60 @@
+<!-- 搜索结果 -->
+<view class="fix searchFix bgF">
+    <!-- 搜索框 -->
+    <view class="bgO pb20 clearfix pl p15">
+        <view class="searchWrap bgO1 rel" bindtap="backSearchEnter">
+            <view class="icon i-search abs inlineB fl"></view>
+            <input placeholder="请输入搜索内容" class="fs28 Cf fl" placeholder-class="Cf" value="{{searchText}}" readonly  />
+        </view>
+    </view>
+    <!-- 选项卡 -->
+    <view class="searchTab clearfix bgF">
+        <view class="fl C3 fs32 tc {{active?'active' : ''}}" bindtap="searchTab">商品</view>
+        <view class="fl C3 fs32 tc {{!active?'active' : ''}}" bindtap="searchTab">店铺</view>
+    </view>
+    <!-- 排序 -->
+    <view class="sortWrap clearfix C6 fs28 tc bgF" wx:if="{{active}}">
+        <view class="fl rel {{curActive == 0?'curActive' : ''}}" data-type="0" bindtap="sortFunc">
+            综合排序
+        </view>
+        <view class="fl rel {{curActive == 1?'curActive' : ''}}" data-type="1" bindtap="sortFunc">
+            销量
+            <view class="icon i-sort rel inlineB {{ sort == 1? 'i-sortup' :  sort == 2?'i-sortdown':''}}"></view>
+        </view>
+        <view class="fl rel {{curActive == 2?'curActive' : ''}}" data-type="2" bindtap="sortFunc">
+            评价
+            <view class="icon i-sort rel inlineB {{ sort == 3? 'i-sortup' :  sort == 4?'i-sortdown':''}}"></view>
+        </view>
+        <view class="fl rel {{curActive == 3?'curActive' : ''}}" data-type="3" bindtap="sortFunc">
+            价格
+            <view class="icon i-sort rel inlineB {{ sort == 5? 'i-sortup' :  sort == 6?'i-sortdown':''}}"></view>
+        </view>
+    </view>
+</view>
+<view class="evboybuyLists comProLists clearfix mb10 searchFixTop" wx:if="{{active}}">
+    <view wx:for="{{goodsLists}}" wx:for-index="index" wx:key="key" bindtap="goProDetail" data-id="{{item.id}}" class="comProItem fl bgF mt10">
+        <view class="comProImageWrap">
+            <image class="" src="{{item.pic}}" lazy-load="true"/>
+        </view>
+        <view class="comProContWrap p15">
+            <view class="fs26 C0 pb10">{{dataFilter.getText(item.productname,25)}}</view>
+            <view class="tr fs C9 fs24 pb10">{{item.placedelivery}}</view>
+            <view class="clearfix">
+                <view class="fl orange fs30">¥{{item.currentprice}}</view>
+                <view class="fr C6 fs24">{{item.sale}}件已售</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view wx:else class="searchStoreTop">
+    <view wx:for="{{storeLists}}" wx:for-index="index" wx:key="key"  class="searchStoreItem p15 bgF">
+        <view class="storeTop clearfix" bindtap="goStoreDetail" data-id="{{item.shopid}}">
+            <image src="{{item.shoppic}}" class="fl" />
+            <view class="fl fs28 C3 ellips ml20">{{item.shopname}}</view>
+            <view class="fr orange tc fs26">进店</view>
+        </view>
+        <view class="clearfix storeCont mt20" wx:if="{{item.prolist.length}}">
+            <image wx:for="{{item.prolist}}" wx:key="key"  src="{{item.pic}}" class="fl mr15" data-id="{{item.id}}" bindtap="goProDetail"/>
+        </view>
+    </view>
+</view>

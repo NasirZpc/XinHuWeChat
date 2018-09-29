@@ -40,10 +40,10 @@ var DataFr = {
             }
         }
         return str;
-    }
+    },
 }
 
 module.exports = {
     getDate: DataFr.getDate,
-    getText: DataFr.getText
+    getText: DataFr.getText,
 }

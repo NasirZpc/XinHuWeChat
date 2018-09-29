@@ -1,7 +1,7 @@
 <wxs module="dataFilter" src="../../filter/dataFilter.wxs"></wxs>
 <!-- 搜索框 -->
 <view class="fix indexSearchWrap tc" bindtap="goSearchEnter">
-    <image class="rel mr10" src="../../icon/search.png" />
+    <view class="icon i-search rel mr10 inlineB"></view>
     <view class="fs28 Cf inlineB">请输入搜索内容</view>
 </view>
 <!--轮播图-->
@@ -32,7 +32,7 @@
 <view class="indexTit rel bgF tc pt20 pb20">
     <view class="bgF rel">
         <view class="indexTitIcon bgO rel tc inlineB mr15">
-            <image src="../../icon/hot.png" class="block" />
+            <view class="icon i-hot"></view>
         </view>
         <text class="fs30 orange">大家都在买</text>
     </view>
@@ -56,10 +56,10 @@
 <!-- 店铺推荐 -->
 <view class="recommendStoreTit pt20 bgF tc clearfix p15">
     <view class="fl C3 fs26">店铺推荐</view>
-    <image class="fl storeIcon ml10" src="../../icon/store.png" />
+    <view class="icon i-store fl storeIcon ml10 rel"></view>
     <view class="fr">
         <view class="fs26 C9 inlineB">更多</view>
-        <image class="rel rightIcon" src="../../icon/right.png"/>
+        <view class="icon i-right rightIcon rel inlineB"></view>
     </view>
 </view>
 <view class="recommendStoreLists bgF p15">
@@ -76,7 +76,7 @@
 <view class="indexTit rel bgF tc pt20 pb20">
     <view class="bgF rel">
         <view class="indexTitIcon bgO rel tc inlineB mr15">
-            <image src="../../icon/like.png" class="block" />
+            <view class="icon i-like"></view>
         </view>
         <text class="fs30 orange">猜你喜欢</text>
     </view>

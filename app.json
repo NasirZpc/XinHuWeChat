@@ -1,10 +1,13 @@
 {
     "pages": [
         "pages/index/index",
+        "pages/search/search",
+        "pages/searchResult/searchResult",
         "pages/cityShopping/cityShopping",
         "pages/xinFind/xinFind",
         "pages/shoppingCar/shoppingCar",
-        "pages/mine/mine"
+        "pages/mine/mine",
+        "pages/proDetail/proDetail"
     ],
     "window": {
         "navigationBarTitleText": "信户商城",

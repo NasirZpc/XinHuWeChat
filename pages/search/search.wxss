@@ -1,0 +1,7 @@
+
+.searchHistroyLists>view{
+    background:#ddd;
+    padding:10rpx 20rpx;
+    border-radius:5rpx;
+    margin:0 15rpx 10rpx 0;
+}

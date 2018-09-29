@@ -72,6 +72,9 @@ Page({
         wx.request({
             url: app.baseUrl + 'index.php/Product/evboybuy',
             method: "POST",
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
             data: {
                 pagesize: 4,
                 p: 1
@@ -95,6 +98,9 @@ Page({
         wx.request({
             url: app.baseUrl + 'index.php/Api/Shop/shoplist',
             method: "POST",
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
             data: {
                 isindex: 1,
                 pagesize: 4,
@@ -122,6 +128,9 @@ Page({
         wx.request({
             url: app.baseUrl + 'index.php/User/guesslike',
             method: "POST",
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
             data: {
                 token: '',
                 pagesize: 6,
@@ -167,5 +176,16 @@ Page({
             this.guesslikeFunc()
         },500)
     },
-
+    /*跳转到搜搜索页*/
+    goSearchEnter(){
+        wx.navigateTo({
+           url: "../search/search"
+        });
+    },
+    //跳转到商品详情页
+    goProDetail(){
+        wx.navigateTo({
+           url: "../proDetail/proDetail"
+        });
+    }
 })

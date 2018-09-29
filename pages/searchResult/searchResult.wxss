@@ -1,0 +1,59 @@
+.searchFix{
+    width:100%;
+    top:0;
+    left:0;
+}
+.searchFixTop{
+    padding-top: 245rpx;
+}
+.sortWrap{
+    border-bottom:1rpx solid #f4f4f4;
+}
+.sortWrap>view{
+    width:25%;
+    height:70rpx;
+    line-height: 70rpx
+}
+.sortWrap>view:after{
+    content:"";
+    display: block;
+    width:1px;
+    height:60%;
+    position: absolute;
+    top:20%;
+    right:0;
+    background:#eee;
+}
+.sortWrap>view:last-child:after{
+    display: none;
+}
+.sortWrap>view.curActive{
+    color:#ff5c00;
+}
+.sortWrap>view .i-sort{
+    top:8rpx;
+    margin-left:5rpx;
+}
+/*店铺列表*/
+.searchStoreTop{
+    padding-top: 187rpx;
+}
+.storeTop image{
+    width:100rpx;
+    height:100rpx;
+}
+.storeTop view.fr{
+    border:1rpx solid #ff5c00;
+    line-height: 50rpx;
+    height:50rpx;
+    width:100rpx;
+    border-radius:80rpx;
+
+}
+.storeCont image{
+    width:230rpx;
+    height:230rpx;
+}
+.storeCont image:nth-of-type(3n){
+    margin-right:0;
+}

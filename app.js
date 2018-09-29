@@ -36,6 +36,11 @@ App({
     globalData: {
         userInfo: null
     },
+    isNull:function( str ){
+        var regu = "^[ ]+$";
+        var re = new RegExp(regu);
+        return re.test(str);
+    },
     //baseUrl
     baseUrl:"https://api.xinhushangcheng.com/"
 })
