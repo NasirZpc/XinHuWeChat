@@ -1,0 +1,15 @@
+<view class="evboybuyLists comProLists clearfix mb10">
+    <view wx:for="{{guesslikeLists}}" wx:for-index="index" wx:key="key" bindtap="goProDetail" data-id="{{item.id}}" class="comProItem fl bgF mt10">
+        <view class="comProImageWrap">
+            <image class="" src="{{item.pic}}" lazy-load="true"/>
+        </view>
+        <view class="comProContWrap p15">
+            <view class="fs26 C0 pb10">{{dataFilter.getText(item.productname,25)}}</view>
+            <view class="tr fs C9 fs24 pb10">{{item.placedelivery}}</view>
+            <view class="clearfix">
+                <view class="fl orange fs30">¥{{item.currentprice}}</view>
+                <view class="fr C6 fs24">{{item.sale}}件已售</view>
+            </view>
+        </view>
+    </view>
+</view>

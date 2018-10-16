@@ -1,0 +1,123 @@
+.proToolBar{
+    height:80rpx;
+    width:70%;
+    padding:0 15%;
+    left:0;
+    top:0;
+    z-index:10;
+    line-height:80rpx;
+    box-shadow: 0rpx 4rpx 10rpx #999;
+}
+.proToolBar>view{
+    width:25%;
+}
+.proToolBar>view.active{
+    color:#ff5c00;
+}
+.proDetail{
+    padding-top:80rpx;
+}
+.banners{
+    width:100%;
+}
+.banners image{
+    width:100%;
+    height: 100%;
+}
+swiper{
+    height:730rpx;
+}
+.proParam>view.fl{
+    width:30%;
+}
+.i-param{
+    top:9rpx;
+}
+.i-right{
+    top:8rpx;
+}
+.i-isLike{
+    top:2rpx;
+}
+.shopHeader image{
+    width:100rpx;
+    height:100rpx;
+    border-radius:10rpx;
+}
+.shopHeader view{
+    line-height: 100rpx;
+}
+.shopCont>view{
+    width:33.33%;
+}
+.shopCont>view.rel:after{
+    content:'';
+    display: block;
+    position:absolute;
+    width:1px;
+    background: #ddd;
+    height:80%;
+    right:0rpx;
+    top:10%;
+    z-index: 1;
+}
+.shopEnter{
+    width:300rpx;
+}
+.shopEnter>view{
+    border:1px solid #ff5c00;
+    padding:10rpx 20rpx;
+    border-radius:30rpx;
+}
+.wxParse-p{
+    background: #fff;
+}
+.wxParse-p image{
+    display: block;
+    width:100%!important;
+}
+.i-collect{
+    top:7rpx;
+}
+.proDetail{
+    padding-bottom: 90rpx;
+}
+/*底部按钮*/
+.proFooter{
+    width:100%;
+    height:90rpx;
+    left:0;
+    bottom:0;
+    box-shadow: 4rpx 0rpx 10rpx #999;
+    z-index: 2;
+}
+.proFooterFastEnter>view{
+    width:100rpx;
+    height:90rpx;
+}
+.proFooterFastEnter>view.rel:after{
+    content:'';
+    display: block;
+    position:absolute;
+    width:1px;
+    background: #ddd;
+    height:70%;
+    right:0rpx;
+    top:15%;
+    z-index: 1;
+}
+.proFooterFastEnter>view>.icon{
+    margin:10rpx auto 0;
+}
+.proFooterBtn>view{
+    margin-right:1px;
+    height:90rpx;
+    width:220rpx;
+    line-height:90rpx;
+}
+.proFooterBtn>view:last-child{
+    margin-right:0;
+}
+.scrollView{
+    height:auto;
+}

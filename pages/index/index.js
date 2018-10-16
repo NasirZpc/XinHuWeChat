@@ -183,9 +183,9 @@ Page({
         });
     },
     //跳转到商品详情页
-    goProDetail(){
+    goProDetail(e){
         wx.navigateTo({
-           url: "../proDetail/proDetail"
+           url: "../proDetail/proDetail?proid="+e.currentTarget.dataset.id + '&isactivity=0'
         });
     }
 })

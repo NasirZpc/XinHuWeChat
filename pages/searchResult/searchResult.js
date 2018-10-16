@@ -190,7 +190,9 @@ Page({
         console.log('跳转店铺详情页')
     },
     //跳转店商品情页
-    goProDetail(){
-        console.log('跳转店商品情页')
+    goProDetail(e){
+        wx.navigateTo({
+           url: "../proDetail/proDetail?proid="+e.currentTarget.dataset.id + '&isactivity=0'
+        });
     }
 })

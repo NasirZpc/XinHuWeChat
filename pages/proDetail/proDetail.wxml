@@ -1,1 +1,136 @@
-<view>1</view>
+<wxs module="dataFilter" src="../../filter/dataFilter.wxs"></wxs>
+<view class="proToolBar fix clearfix bgF C3 fs28 tc">
+    <view bindtap="scrollToViewFn" data-id="0" class="fl {{isActive ==0?'active' : ''}}"><view class="icon i-cur"></view>商品</view>
+    <view bindtap="scrollToViewFn" data-id="1" class="fl {{isActive ==1?'active' : ''}}"><view class="icon i-cur"></view>评价</view>
+    <view bindtap="scrollToViewFn" data-id="2" class="fl {{isActive ==2?'active' : ''}}"><view class="icon i-cur"></view>详情</view>
+    <view bindtap="scrollToViewFn" data-id="3" class="fl {{isActive ==3?'active' : ''}}"><view class="icon i-cur"></view>推荐</view>
+</view>
+<scroll-view bindscroll="scroll"  scroll-into-view="{{toView}}" scroll-y="true" scroll-with-animation="true" style='height:{{windowHeight}}rpx;' bindscrolltolower="onReachBottomFunc">
+    <view class="proDetail">
+        <swiper class="banners" circular="true" indicator-dots="true"  interval="5000" duration="1000" indicator-active-color="#ff5c00" id="view0">
+            <block wx:for="{{proDetail.prodetail.pic}}" wx:for-index="index" wx:key="key">
+                <swiper-item>
+                    <image src="{{item}}" class="slide-image"/>
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="proTit bgF p15">
+            <view class="clearfix">
+                <view class="fl">
+                    <view class="sprice orange fs34">¥{{proDetail.stock.list[0].sprice}}</view>
+                    <view class="C9 fs24 lineThrough">¥{{proDetail.stock.list[0].price}}</view>
+                </view>
+                <view class="fr C9 fs24"><view class="icon i-collect inlineB rel mr10"></view>收藏宝贝</view>
+            </view>
+            <view class="C3 fs28 mt10">{{proDetail.prodetail.productname}}</view>
+            <view class="clearfix mt5">
+                <view class="fl C9 fs24">{{proDetail.prodetail.sale}}件已售</view>
+            </view>
+        </view>
+        <view class="proParam mt1 bgF clearfix C9 fs24 p2515">
+            <view class="fl tc"><view class="icon i-param rel inlineB mr10"></view>七天无理由退款</view>
+            <view class="fl tc"><view class="icon i-param rel inlineB mr10"></view>48小时发货</view>
+            <view class="fl tc"><view class="icon i-param rel inlineB mr10"></view>运费险</view>
+            <view class="fr icon i-right rel"></view>
+        </view>
+        <view class="proParam mt1 bgF clearfix C6 fs28 p2515">
+            <view class="fl">请选择规格</view>
+            <view class="fr icon i-right rel"></view>
+        </view>
+        <view class="proParam mt20 bgF clearfix C6 fs28 p2515" bindtap="goProComment" id="view1">
+            <view class="fl">宝贝评价(<text class="orange">{{proComment.total}}</text>)</view>
+            <view class="fr icon i-right rel"></view>
+        </view>
+        <view class="proCommentLists" bindtap="goProComment">
+            <view class="tc fs28 C6 noComment p2515 bgF mt1" wx:if="{{proComment.total==0}}" >暂无评价</view>
+            <view class="hasComment" wx:else>
+                <view class="bgF mt1 p15 CommentItem" wx:for="{{proComment.procomment}}" wx:for-index="index" wx:key="key">
+                    <view class="clearfix mb10">
+                        <image src="{{item.avatar}}" class="fl headImg" />
+                        <text class="fs26 C6 ml20 fl">{{item.fullname}}</text>
+                        <text class="fr fs24 C9">{{item.createtime}}</text>
+                    </view>
+                    <view class="isLike orange fs24 mb10" wx:if="{{item.type == 3}}"><!-- 好评 -->
+                        <view class="icon i-isLike inlineB rel"></view>
+                        <view class="ml20 inlineB">好评</view>
+                    </view>
+                    <view class="fs28 C6 mb10">{{item.content}}</view>
+                    <view class="fs24 C9">商品规格：{{item.attrname}}</view>
+                </view>
+                <view class="bgF orange tc p15 fs24 allComment">
+                    <view class="mt10">查看全部评价</view>
+                </view>
+            </view>
+        </view>
+        <view class="p15 bgF mt20 mb20">
+            <view class="clearfix shopHeader mb30">
+                <image src="{{proDetail.shop.shoppic}}" class="fl" />
+                <view class="fl ml20 fs28 C3">{{proDetail.shop.shopname}}</view>
+            </view>
+            <view class="shopCont clearfix tc">
+                <view class="fl fs26 C3 rel">
+                    <view class="mb15 mt10">店铺商品</view>
+                    <view class="">{{proDetail.shop.goods}}</view>
+                </view>
+                <view class="fl fs26 C3 rel">
+                    <view class="mb15 mt10">关注人数</view>
+                    <view class="">{{proDetail.shop.attention}}</view>
+                </view>
+                <view class="fr fs22 c3">
+                    <view class="mb10">宝贝描述<text class="orange ml10">{{proDetail.shop.match}}</text></view>
+                    <view class="mb10">买家服务<text class="orange ml10">{{proDetail.shop.serveratt}}</text></view>
+                    <view>物流服务<text class="orange ml10">{{proDetail.shop.logistics}}</text></view>
+                </view>
+            </view>
+            <view class="shopEnter fs24 marAuto mt20 mb20 orange clearfix">
+                <view class="fl tc">查看分类</view>
+                <view class="fr tc">进入店铺</view>
+            </view>
+        </view>
+        <view id="view2">
+            <import src="../../wxParse/wxParse.wxml"/>
+            <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+        </view>
+        <navigator url="../guessLike/guessLike">
+            <view class="proParam mt20 bgF clearfix C6 fs28 p2515" id="view3">
+                <view class="fl">猜你喜欢</view>
+                <view class="fr icon i-right rel"></view>
+            </view>
+        </navigator>
+        <view class="evboybuyLists comProLists clearfix mb10">
+            <view wx:for="{{guesslikeLists}}" wx:for-index="index" wx:key="key" bindtap="goProDetail" data-id="{{item.id}}" class="comProItem fl bgF mt10">
+                <view class="comProImageWrap">
+                    <image class="" src="{{item.pic}}" lazy-load="true"/>
+                </view>
+                <view class="comProContWrap p15">
+                    <view class="fs26 C0 pb10">{{dataFilter.getText(item.productname,25)}}</view>
+                    <view class="tr fs C9 fs24 pb10">{{item.placedelivery}}</view>
+                    <view class="clearfix">
+                        <view class="fl orange fs30">¥{{item.currentprice}}</view>
+                        <view class="fr C6 fs24">{{item.sale}}件已售</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</scroll-view>
+<view class="fix proFooter clearfix bgF">
+    <view class="fl clearfix proFooterFastEnter">
+        <view class="fl tc rel">
+            <view class="icon i-kefu"></view>
+            <view class="fs22 orange">客服</view>
+        </view>
+        <view class="fl tc rel">
+            <view class="icon i-shop"></view>
+            <view class="fs22 C9">店铺</view>
+        </view>
+        <view class="fl tc">
+            <view class="icon i-collect1"></view>
+            <view class="fs22 C9">收藏</view>
+        </view>
+    </view>
+    <view class="fr clearifx proFooterBtn tc fs26 Cf">
+        <view class="fl bgO addShopCar">加入购物车</view>
+        <view class="fl bgO buyNow">立即购买</view>
+    </view>
+</view>

@@ -1,0 +1,38 @@
+.commentNav{
+    width:100%;
+    left:0;
+    top:0;
+    z-index:1;
+    box-shadow: 0rpx 4rpx 10rpx #999;
+}
+.commentNav>view{
+    width:130rpx;
+    padding:10rpx 0px;
+    margin:0 19rpx 19rpx 0;
+    background:#ddd;
+    border-radius:30rpx;
+}
+.commentNav>view:nth-of-type(5){
+    margin-right:0;
+}
+.commentNav>view:nth-of-type(6){
+    margin-bottom:0;
+}
+.commentNav>view.active{
+    background: #ff5c00;
+    color:#fff;
+}
+.commentImg image{
+    width:180rpx;
+    height:180rpx;
+}
+.commentBottom>view.fr>view{
+    border:1px solid #999;
+    width:130rpx;
+    height:40rpx;
+    line-height: 40rpx;
+    border-radius:40rpx;
+}
+.commentBottom>view.fr>view .icon{
+    top:-2rpx;
+}
