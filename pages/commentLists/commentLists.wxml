@@ -6,33 +6,36 @@
     <view class="fl fs26 C6 tc {{isActive ==5?'active' : ''}}" data-id="5" bindtap="commentTypeTab">有图({{picnums}})</view>
     <view class="fl fs26 C6 tc {{isActive ==4?'active' : ''}}" data-id="4" bindtap="commentTypeTab">追评({{chaseratings}})</view>
 </view>
-<view class="proCommentLists" bindtap="goCommentDetail" style="padding-top:165rpx;">
+<view class="proCommentLists" style="padding-top:165rpx;">
     <view class="tc fs28 orange noComment p2515 mt1" wx:if="{{noMore && commentLists.length==0}}" >暂无数据</view>
     <view class="hasComment" wx:else>
         <view class="bgF mb10 p15 CommentItem" wx:for="{{commentLists}}" wx:for-index="index" wx:key="key">
-            <view class="clearfix mb10">
-                <image src="{{item.avatar}}" class="fl headImg" />
-                <text class="fs26 C6 ml20 fl">{{item.fullname}}</text>
-                <text class="fr fs24 C9">{{item.createtime}}</text>
-            </view>
-            <view class="isLike orange fs24 mb10" wx:if="{{item.type == 3}}"><!-- 好评 -->
-                <view class="icon i-isLike inlineB rel"></view>
-                <view class="ml20 inlineB">好评</view>
-                <view class="fs24 C9 inlineB ml20">商品规格：{{item.attrname}}</view>
-            </view>
-            <view class="fs28 C6 mb10">{{item.content}}</view>
-            <view class="commentImg clearfix mb10">
-                <image class="fl" wx:for="{{item.pic}}" src="{{item}}" />
+            <view bindtap="goCommentDetail" data-id="{{item.id}}">
+                <view class="clearfix mb10">
+                    <image src="{{item.avatar}}" class="fl headImg" />
+                    <text class="fs26 C6 ml20 fl">{{item.fullname}}</text>
+                    <text class="fr fs24 C9">{{item.createtime}}</text>
+                </view>
+                <view class="isLike orange fs24 mb10" wx:if="{{item.type == 3}}"><!-- 好评 -->
+                    <view class="icon i-isLike inlineB rel"></view>
+                    <view class="ml20 inlineB">好评</view>
+                    <view class="fs24 C9 inlineB ml20">商品规格：{{item.attrname}}</view>
+                </view>
+                <view class="fs28 C6 mb10">{{item.content}}</view>
+                <view class="commentImg clearfix mb10">
+                    <image class="fl" wx:for="{{item.pic}}" src="{{item}}" />
+                </view>
             </view>
             <view class="clearfix commentBottom">
                 <view class="fl fs24 C9">浏览:{{item.browsetimes}}</view>
                 <view class="fr C9 fs26 clearfix">
-                    <view class="fl tc">
+                    <view class="fl tc" bindtap="goCommentDetail" data-id="{{item.id}}">
                         <view class="icon i-ele inlineB rel mr10"></view>
                         <view class="inlineB">{{item.replynums}}</view>
                     </view>
-                    <view class="fl ml20 tc">
-                        <view class="icon i-zan inlineB rel mr10"></view>
+                    <view class="fl ml20 tc" bindtap="commentLikeFunc" data-id="{{item.id}}" data-islike="{{item.islike}}">
+                        <view class="icon i-zan inlineB rel mr10" wx:if="{{item.islike ==0}}"></view>
+                        <view class="icon i-zan i-zaned inlineB rel mr10" wx:if="{{item.islike !=0}}"></view>
                         <view class="inlineB">{{item.likes}}</view>
                     </view>
                 </view>

@@ -1,0 +1,16 @@
+<view class="commentDetail clearfix p15 bgF">
+    <view class="clearfix hasComment CommentItem">
+        <image class="fl headImg" src="{{commentDetail.comment.avatar}}" />
+        <text class="fs26 C6 ml20 fl">{{commentDetail.comment.fullname}}</text>
+        <view class="fr" wx:if="{{commentDetail.comment.type == 3}}">
+            <view class="icon i-isLike inlineB rel"></view>
+            <view class="ml10 inlineB orange fs24">好评</view>
+        </view>
+    </view>
+    <view class="fs24 C9 mt10">
+        <view class="inlineB">{{commentDetail.comment.createtime}}</view>
+        <view class="inlineB ml10">{{commentDetail.comment.attrname}}</view>
+    </view>
+    <image wx:for="commentDetail.comment.pic" wx:for-index="index" wx:key="key" src="{{item}}" style="width:100%;"/>
+    <view></view>
+</view>

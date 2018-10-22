@@ -102,10 +102,63 @@ Page({
         });
         this.commentListsFunc()
     },
+    //点赞
+    commentLikeFunc(e){
+        if(e.currentTarget.dataset.islike == 0){//未点赞
+            wx.request({//点赞
+                url: app.baseUrl + '/index.php/Api/Product/addcommentlikes',
+                method: "POST",
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded' // 默认值
+                },
+                data: {
+                    token:"",
+                    commentid:e.currentTarget.dataset.id
+                },
+                success: (res) => {
+                    if (res.data.status == 1) {
+                        this.onLoad()
+                    } else {
+                        wx.showToast({
+                            title: res.data.msg,
+                            duration: 2500,
+                            icon: 'none',
+                            mask: true
+                        })
+                    }
+                }
+            });
+        }else{//已点赞
+            wx.request({//取消点赞
+                url: app.baseUrl + '/index.php/Api/Product/delcommentlikes',
+                method: "POST",
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded' // 默认值
+                },
+                data: {
+                    token:"",
+                    commentid:e.currentTarget.dataset.id
+                },
+                success: (res) => {
+                    if (res.data.status == 1) {
+                        this.onLoad()
+                    } else {
+                        wx.showToast({
+                            title: res.data.msg,
+                            duration: 2500,
+                            icon: 'none',
+                            mask: true
+                        })
+                    }
+                }
+            });
+        }
+
+    },
     //跳转到评论详情页
-    // goProDetail(e){
-    //     wx.navigateTo({
-    //        url: "../proDetail/proDetail?proid="+e.currentTarget.dataset.id + '&isactivity=0'
-    //     });
-    // },
+    goCommentDetail(e){
+        wx.navigateTo({
+           url: "../commentDetail/commentDetail?commentid="+e.currentTarget.dataset.id
+        });
+    },
 })
