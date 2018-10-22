@@ -48,7 +48,7 @@ Page({
             }
         });
     },
-    /*上拉加载*/
+    //上拉加载
     onReachBottom() {
         var that = this;
         // 显示加载图标
@@ -61,13 +61,13 @@ Page({
             this.storeListsFunc()
         },500)
     },
-    /*商品详情页*/
+    //商品详情页
     goProDetail(e){
         wx.navigateTo({
            url: "../proDetail/proDetail?proid="+e.currentTarget.dataset.id + '&isactivity=0'
         });
     },
-    /*店铺详情*/
+    //店铺详情
     goStoreDetail(e){
         wx.navigateTo({
            url: "../storeDetail/storeDetail?shopid="+e.currentTarget.dataset.id

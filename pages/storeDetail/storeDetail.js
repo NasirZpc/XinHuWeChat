@@ -17,7 +17,7 @@ Page({
         })
         //店铺列表
         wx.request({
-            url: app.baseUrl + '',
+            url: app.baseUrl + '/index.php/Api/Shop/getshop',
             method: "POST",
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
@@ -30,6 +30,9 @@ Page({
                 if (res.data.status == 1) {
                     this.setData({
                         storeDetail: res.data.data
+                    })
+                    wx.setNavigationBarTitle({
+                        title: res.data.data.shopname
                     })
                     // 隐藏加载框
                     setTimeout(()=>{

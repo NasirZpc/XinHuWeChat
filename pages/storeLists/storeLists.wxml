@@ -1,16 +1,14 @@
-<view class="storeLists mb10 p15 bgF" wx:for="{{storeLists}}">
-    <view classs="storeListsCont clearfix">
+<view class="storeLists mb10 p15 bgF" wx:for="{{storeLists}}" wx:for-index="index" wx:key="key">
+    <view class="storeListsCont clearfix">
         <image class="fl" src="{{item.headimg}}" />
-        <view class="fl">
+        <view class="fl ml20">
             <view class="fs26 C3">{{item.shopname}}</view>
             <view class="fs22 C9">{{item.goods}}件商品</view>
             <view class="fs22 C9">{{item.sales}}已售</view>
         </view>
         <view class="fr orange fs24" data-id="{{item.shopid}}" bindtap="goStoreDetail">进店</view>
     </view>
-    <view class="clearfix">
-        <view class="storeListsPro fl" wx:for="{{item.prolist}}" data-id="{{item.proid}}" bindtap="goProDetail">
-            <image src="{{item.pic}}" />
-        </view>
+    <view class="clearfix mt20" wx:if="{{item.prolist}}">
+        <image src="{{item.pic}}" class="storeListsPro fl" wx:for="{{item.prolist}}"  data-id="{{item.proid}}" bindtap="goProDetail" wx:for-index="index" wx:key="key" />
     </view>
 </view>

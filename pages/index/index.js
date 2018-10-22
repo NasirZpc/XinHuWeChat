@@ -189,4 +189,9 @@ Page({
         });
     },
     //跳转到店铺详情页
+    goStoreDetail(e){
+        wx.navigateTo({
+           url: "../storeDetail/storeDetail?shopid="+e.currentTarget.dataset.id
+        });
+    },
 })
