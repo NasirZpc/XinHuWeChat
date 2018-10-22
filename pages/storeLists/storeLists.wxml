@@ -6,7 +6,7 @@
             <view class="fs22 C9">{{item.goods}}件商品</view>
             <view class="fs22 C9">{{item.sales}}已售</view>
         </view>
-        <view class="fr orange fs24">进店</view>
+        <view class="fr orange fs24" data-id="{{item.shopid}}" bindtap="goStoreDetail">进店</view>
     </view>
     <view class="clearfix">
         <view class="storeListsPro fl" wx:for="{{item.prolist}}" data-id="{{item.proid}}" bindtap="goProDetail">

@@ -11,7 +11,8 @@
         "pages/commentLists/commentLists",
         "pages/commentDetail/commentDetail",
         "pages/guessLike/guessLike",
-        "pages/storeLists/storeLists"
+        "pages/storeLists/storeLists",
+        "pages/storeDetail/storeDetail"
     ],
     "window": {
         "navigationBarTitleText": "信户商城",

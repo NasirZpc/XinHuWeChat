@@ -1,6 +1,6 @@
 .storeListsCont>image{
-    width:140rpx;
-    height:140rpx;
+    width:100rpx;
+    height:100rpx;
 }
 .storeListsCont>view.fl{
     width:350rpx;
