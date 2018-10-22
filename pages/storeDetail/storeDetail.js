@@ -34,7 +34,6 @@ Page({
                     wx.setNavigationBarTitle({
                         title: res.data.data.shopname
                     })
-                    // 隐藏加载框
                     setTimeout(()=>{
                         wx.hideLoading()
                     },500)

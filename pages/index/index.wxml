@@ -44,7 +44,10 @@
             <image class="" src="{{item.pic}}" />
         </view>
         <view class="comProContWrap p15">
-            <view class="fs26 C0 pb10">{{dataFilter.getText(item.productname,25)}}</view>
+            <view class="fs26 C0 pb10">
+                <image wx:if="{{item.activityicon}}" src="{{item.activityicon}}" style="width:28rpx;height:28rpx;" />
+                {{dataFilter.getText(item.productname,24)}}
+            </view>
             <view class="tr fs C9 fs24 pb10">{{item.placedelivery}}</view>
             <view class="clearfix">
                 <view class="fl orange fs30">¥{{item.currentprice}}</view>
