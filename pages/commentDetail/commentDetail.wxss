@@ -1,1 +1,34 @@
+.shopreply{
+    background: #f4f4f4;
+    width:91%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius:10rpx;
+    overflow: visible;
+}
+.shopreply:after{
+    content:"";
+    display: block;
+    position:absolute;
+    width:0;
+    height:0;
+    border-width:0 14rpx 14rpx;
+    border-style:solid;
+    border-color:transparent transparent #f4f4f4;
+    top:-12rpx;
+    left:20rpx;
+}
 
+.commentPro image{
+    width:140rpx;
+    height:140rpx;
+}
+.commentPro>view{
+    width:73%;
+    background: #eee;
+    height:114rpx;
+}
+.commentPro>view .abs{
+    bottom:10rpx;
+    left:15rpx;
+}

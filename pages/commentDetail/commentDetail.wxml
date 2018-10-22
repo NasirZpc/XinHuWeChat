@@ -1,4 +1,4 @@
-<view class="commentDetail clearfix p15 bgF">
+<view class="clearfix p15 bgF">
     <view class="clearfix hasComment CommentItem">
         <image class="fl headImg" src="{{commentDetail.comment.avatar}}" />
         <text class="fs26 C6 ml20 fl">{{commentDetail.comment.fullname}}</text>
@@ -7,10 +7,30 @@
             <view class="ml10 inlineB orange fs24">好评</view>
         </view>
     </view>
-    <view class="fs24 C9 mt10">
+    <view class="fs24 C9 mt20 mb20">
         <view class="inlineB">{{commentDetail.comment.createtime}}</view>
         <view class="inlineB ml10">{{commentDetail.comment.attrname}}</view>
     </view>
-    <image wx:for="commentDetail.comment.pic" wx:for-index="index" wx:key="key" src="{{item}}" style="width:100%;"/>
+    <image wx:for="{{commentDetail.comment.pic}}" wx:for-index="index" wx:key="key" src="{{item}}" style="width:100%;"/>
+    <!-- 商家回复 -->
+    <view class="mt30 p15 shopreply fs26 C3 rel">商家回复：{{commentDetail.shopreply}}</view>
+</view>
+<!-- 商品 -->
+<view class="clearfix commentPro mt1 p15 bgF">
+    <image class="fl" src="{{commentDetail.Product.pic[0]}}" />
+    <view class="fl ml20 rel p15">
+        <view class="fs26 C6">{{commentDetail.Product.productname}}</view>
+        <view class="fs26 orange abs">¥{{commentDetail.Product.currentprice}}</view>
+    </view>
+</view>
+<!-- 评论列表 -->
+<view class="bgF p15 clearfix mt1" wx:for="{{commentDetail.replay}}" wx:for-index="index" wx:key="key">
+    <view></view>
+    <image class="fl" src="{{item.pic}}" />
+    <view class="fl">{{tem}}</view>
+</view>
+<!-- 商品评论 -->
+<view class="clearfix fix commentReply">
+    <input />
     <view></view>
 </view>
