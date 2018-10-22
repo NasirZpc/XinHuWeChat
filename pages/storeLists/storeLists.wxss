@@ -1,0 +1,17 @@
+.storeListsCont>image{
+    width:140rpx;
+    height:140rpx;
+}
+.storeListsCont>view.fl{
+    width:350rpx;
+}
+.storeListsCont>view.fr{
+    border:1px solid #orange;
+    padding:15rpx 15rpx;
+}
+.storeListsPro{
+    width:33.33%;
+}
+.storeListsPro>image{
+    width:100%;
+}

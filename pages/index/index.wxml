@@ -57,10 +57,12 @@
 <view class="recommendStoreTit pt20 bgF tc clearfix p15">
     <view class="fl C3 fs26">店铺推荐</view>
     <view class="icon i-store fl storeIcon ml10 rel"></view>
-    <view class="fr">
-        <view class="fs26 C9 inlineB">更多</view>
-        <view class="icon i-right rightIcon rel inlineB"></view>
-    </view>
+    <navigator url="../storeLists/storeLists">
+        <view class="fr" bindtap="goStoreLists">
+            <view class="fs26 C9 inlineB">更多</view>
+            <view class="icon i-right rightIcon rel inlineB"></view>
+        </view>
+    </navigator>
 </view>
 <view class="recommendStoreLists bgF p15">
     <view wx:for="{{recommendStoreLists}}" wx:for-index="index" wx:key="key" bindtap="goStoreDetail" data-id="{{item.id}}" class="recommendStoreItem mb25 fl clearfix">

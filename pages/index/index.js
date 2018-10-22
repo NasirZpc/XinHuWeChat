@@ -187,5 +187,6 @@ Page({
         wx.navigateTo({
            url: "../proDetail/proDetail?proid="+e.currentTarget.dataset.id + '&isactivity=0'
         });
-    }
+    },
+    //跳转到店铺详情页
 })
