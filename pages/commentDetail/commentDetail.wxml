@@ -1,36 +1,55 @@
-<view class="clearfix p15 bgF">
-    <view class="clearfix hasComment CommentItem">
-        <image class="fl headImg" src="{{commentDetail.comment.avatar}}" />
-        <text class="fs26 C6 ml20 fl">{{commentDetail.comment.fullname}}</text>
-        <view class="fr" wx:if="{{commentDetail.comment.type == 3}}">
-            <view class="icon i-isLike inlineB rel"></view>
-            <view class="ml10 inlineB orange fs24">好评</view>
+<view style="padding-bottom:80rpx;">
+    <view class="clearfix p15 bgF">
+        <view class="clearfix hasComment CommentItem">
+            <image class="fl headImg" src="{{commentDetail.comment.avatar}}" />
+            <text class="fs26 C3 ml20 fl">{{commentDetail.comment.fullname}}</text>
+            <view class="fr" wx:if="{{commentDetail.comment.type == 3}}">
+                <view class="icon i-isLike inlineB rel"></view>
+                <view class="ml10 inlineB orange fs24">好评</view>
+            </view>
+        </view>
+        <view class="fs24 C9 mt20 mb20">
+            <view class="inlineB">{{commentDetail.comment.createtime}}</view>
+            <view class="inlineB ml10">{{commentDetail.comment.attrname}}</view>
+        </view>
+        <image wx:for="{{commentDetail.comment.pic}}" wx:for-index="index" wx:key="key" src="{{item}}" style="width:100%;"/>
+        <view class="fs26 C6">{{commentDetail.comment.content}}</view>
+        <!-- 商家回复 -->
+        <view wx:if="{{commentDetail.shopreply}}" class="mt30 p15 shopreply fs26 C3 rel">商家回复：{{commentDetail.shopreply}}</view>
+    </view>
+    <!-- 商品 -->
+    <view class="clearfix commentPro mt1 p15 bgF">
+        <image class="fl" src="{{commentDetail.Product.pic[0]}}" />
+        <view class="fl ml20 rel p15">
+            <view class="fs26 C3">{{commentDetail.Product.productname}}</view>
+            <view class="fs26 orange abs">¥{{commentDetail.Product.currentprice}}</view>
         </view>
     </view>
-    <view class="fs24 C9 mt20 mb20">
-        <view class="inlineB">{{commentDetail.comment.createtime}}</view>
-        <view class="inlineB ml10">{{commentDetail.comment.attrname}}</view>
+    <!-- 评论列表 -->
+    <view class="bgF p15 clearfix mt1 hasComment" wx:for="{{commentDetail.replay}}" wx:for-index="index" wx:key="key">
+        <image class="fl headImg" src="{{item.avatar}}" />
+        <view class="fl ml20" style="width:86%;">
+            <view class="fs26 C3">{{item.fullname}}</view>
+            <view class="fs24 C9 clearfix mt10">
+                <view class="fl">{{item.createtime}}</view>
+                <view class="fr">
+                    <view class="icon i-zan inlineB rel mr10" wx:if="{{item.islike ==0}}"></view>
+                    <view class="icon i-zan i-zaned inlineB rel mr10" wx:if="{{item.islike !=0}}"></view>
+                    <view class="inlineB">{{item.likes}}</view>
+                </view>
+            </view>
+            <view class="fs26 C3 mt30">{{item.content}}</view>
+        </view>
     </view>
-    <image wx:for="{{commentDetail.comment.pic}}" wx:for-index="index" wx:key="key" src="{{item}}" style="width:100%;"/>
-    <!-- 商家回复 -->
-    <view class="mt30 p15 shopreply fs26 C3 rel">商家回复：{{commentDetail.shopreply}}</view>
 </view>
-<!-- 商品 -->
-<view class="clearfix commentPro mt1 p15 bgF">
-    <image class="fl" src="{{commentDetail.Product.pic[0]}}" />
-    <view class="fl ml20 rel p15">
-        <view class="fs26 C6">{{commentDetail.Product.productname}}</view>
-        <view class="fs26 orange abs">¥{{commentDetail.Product.currentprice}}</view>
+<!-- 底部 -->
+<view class="clearfix fix commentReply bgF">
+    <view class="fl tc rel">
+        <view class="icon i-ele inlineB rel mr10"></view>
+        <view class="inlineB fs26 C6">评论</view>
     </view>
-</view>
-<!-- 评论列表 -->
-<view class="bgF p15 clearfix mt1" wx:for="{{commentDetail.replay}}" wx:for-index="index" wx:key="key">
-    <view></view>
-    <image class="fl" src="{{item.pic}}" />
-    <view class="fl">{{tem}}</view>
-</view>
-<!-- 商品评论 -->
-<view class="clearfix fix commentReply">
-    <input />
-    <view></view>
+    <view class="fr tc">
+        <view class="icon i-zan inlineB rel mr10"></view>
+        <view class="inlineB fs26 C6">点赞</view>
+    </view>
 </view>
