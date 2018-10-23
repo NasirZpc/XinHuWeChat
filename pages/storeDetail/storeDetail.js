@@ -4,6 +4,7 @@ Page({
     data:{
         shopid:'',
         storeDetail:'',
+        isActive:0,
     },
     onLoad(option) {
         this.setData({
@@ -48,10 +49,17 @@ Page({
             }
         });
     },
-    /*商品详情页*/
+    //商品详情页
     goProDetail(e){
         wx.navigateTo({
            url: "../proDetail/proDetail?proid="+e.currentTarget.dataset.id + '&isactivity=0'
         });
     },
+    //商品详情页内容切换
+    storeNavFunc(e){
+        var id = e.target.dataset.id;
+        this.setData({
+            isActive:id
+        });
+    }
 })

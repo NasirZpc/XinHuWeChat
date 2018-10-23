@@ -1,1 +1,60 @@
+.storeDetailHeader{
+    height:200rpx;
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position:center;
+}
+.storeSearch{
+    width:480rpx;
+    padding-left: 15rpx;
+    height:60rpx;
+    border-radius: 60rpx;
+    line-height: 60rpx;
+    background: rgba(255,255,255,0.4);
+    overflow: hidden;
+}
+.i-class,.i-storeNav{
+    z-index: 1;
+    top:10rpx;
+}
+.i-class{
+    right:85rpx;
+}
+.i-storeNav{
+    right:15rpx;
+}
+.storeHeader{
+    width:94.5%;
+    bottom:20rpx;
+}
 
+.storeHeader>image{
+    width:90rpx;
+    height:90rpx;
+    border-radius: 10rpx;
+}
+.shopname{
+    line-height: 90rpx;
+}
+.storeCollectBtn{
+    background: #ff5c00;
+    width:108rpx;
+    height:42rpx;
+    border-radius:42rpx;
+    overflow: hidden;
+}
+.storeCollectBtn>view.text{
+    line-height: 42rpx;
+}
+.i-storeCollect{
+    top:-2rpx;
+    left:-1rpx;
+}
+.storeNav>view{
+    width:33.33%;
+    height:60rpx;
+    line-height:60rpx;
+}
+.storeNav .active{
+    color:#ff5c00;
+}

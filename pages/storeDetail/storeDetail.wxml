@@ -1,3 +1,29 @@
-<view>
-    
+<view class="storeDetailHeader p20 rel" style="background-image:url('{{storeDetail.background}}');">
+    <view class="rel storeSearchWrap">
+        <view class="storeSearch" bindtap="storeSearchFunc">
+            <view class="icon i-search rel mr10 inlineB"></view>
+            <view class="fs28 Cf inlineB">搜索店铺内宝贝</view>
+        </view>
+        <view class="abs icon i-class"></view>
+        <view class="abs icon i-storeNav"></view>
+    </view>
+    <view class="clearfix storeHeader abs">
+        <image class="fl" src="{{storeDetail.shoppic}}" />
+        <view class="fs24 Cf fl shopname ml20">{{storeDetail.shopname}}</view>
+        <view class="fr fs22 Cf tc rel" style="top:4rpx;">
+            <view class="storeCollectBtn mb10" bindtap="storeCollectFunc">
+                <view class="icon i-storeCollect inlineB rel"></view>
+                <view class="inlineB text">关注</view>
+            </view>
+            <view>{{storeDetail.attention}}人关注</view>
+        </view>
+    </view>
 </view>
+<view class="storeNav clearfix bgF mb1 C3 fs26 tc">
+    <view class="fl {{isActive ==0?'active' : ''}}" data-id="0" bindtap="storeNavFunc">店铺首页</view>
+    <view class="fl {{isActive ==1?'active' : ''}}" data-id="1" bindtap="storeNavFunc">全部列表</view>
+    <view class="fl {{isActive ==2?'active' : ''}}" data-id="2" bindtap="storeNavFunc">信发现</view>
+</view>
+<view wx:show="{{isActive ==0}}">1</view>
+<view wx:show="{{isActive ==1}}">2</view>
+<view wx:show="{{isActive ==2}}">3</view>

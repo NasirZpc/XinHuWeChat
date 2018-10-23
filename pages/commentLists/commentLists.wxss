@@ -32,6 +32,7 @@
     height:40rpx;
     line-height: 40rpx;
     border-radius:40rpx;
+    overflow: hidden;
 }
 .commentBottom>view.fr>view .icon{
     top:-2rpx;
