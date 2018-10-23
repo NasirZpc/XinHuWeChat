@@ -154,6 +154,13 @@
     <!-- 信发现 -->
     <view wx:if="{{isActive ==2}}"></view>
 </view>
-<view class="fix storeFooter bgF">
-
+<view class="fix storeFooter bgF tc C6 fs24">
+    <view class="fl rel">
+        <view class="icon i-storeClass"></view>
+        <view>宝贝分类</view>
+    </view>
+    <view class="fr">
+        <view class="icon i-storeKefu"></view>
+        <view>客服</view>
+    </view>
 </view>

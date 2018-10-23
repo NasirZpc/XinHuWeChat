@@ -133,3 +133,21 @@
     box-shadow: 4rpx 0rpx 10rpx #999;
     z-index: 2;
 }
+.storeFooter>view{
+    width:50%;
+    height: 100%;
+}
+.storeFooter>view.fl:after{
+    content:'';
+    display: block;
+    position: absolute;
+    width:1rpx;
+    height:100%;
+    background: #ddd;
+    top:0;
+    right:0;
+    z-index: 1;
+}
+.storeFooter>view .icon{
+    margin:10rpx auto 0rpx;
+}
