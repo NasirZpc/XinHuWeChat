@@ -1,5 +1,5 @@
 const app = getApp()
-
+var WxParse = require('../../wxParse/wxParse.js');
 Page({
     data:{
         shopid:'',
@@ -16,6 +16,7 @@ Page({
         wx.showLoading({
             title: '玩命加载中',
         })
+        var that = this
         //店铺列表
         wx.request({
             url: app.baseUrl + '/index.php/Api/Shop/getshop',
@@ -35,6 +36,7 @@ Page({
                     wx.setNavigationBarTitle({
                         title: res.data.data.shopname
                     })
+                    WxParse.wxParse('article', 'html', res.data.data.shopcontent, that,5)
                     setTimeout(()=>{
                         wx.hideLoading()
                     },500)

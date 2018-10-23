@@ -40,30 +40,7 @@ swiper{
     height:130rpx;
 }
 
-/*大家都在买*/
-.indexTit>.bgF{
-    width:240rpx;
-    z-index: 2;
-    margin:0 auto;
-}
-.indexTitIcon{
-    width:38rpx;
-    height:38rpx;
-    border-radius: 50%;
-    top:8rpx;
-}
-.indexTitIcon image{
-    width: 23rpx;
-    height:23rpx;
-    margin:8rpx auto 0;
-}
-.indexTitLine{
-    height:1rpx;
-    width:44%;
-    top:50rpx;
-    left:28%;
-    z-index: 1;
-}
+
 /*店铺推荐*/
 .recommendStoreTit{
     line-height: 32rpx;

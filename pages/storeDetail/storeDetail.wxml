@@ -1,29 +1,141 @@
-<view class="storeDetailHeader p20 rel" style="background-image:url('{{storeDetail.background}}');">
-    <view class="rel storeSearchWrap">
-        <view class="storeSearch" bindtap="storeSearchFunc">
-            <view class="icon i-search rel mr10 inlineB"></view>
-            <view class="fs28 Cf inlineB">搜索店铺内宝贝</view>
-        </view>
-        <view class="abs icon i-class"></view>
-        <view class="abs icon i-storeNav"></view>
-    </view>
-    <view class="clearfix storeHeader abs">
-        <image class="fl" src="{{storeDetail.shoppic}}" />
-        <view class="fs24 Cf fl shopname ml20">{{storeDetail.shopname}}</view>
-        <view class="fr fs22 Cf tc rel" style="top:4rpx;">
-            <view class="storeCollectBtn mb10" bindtap="storeCollectFunc">
-                <view class="icon i-storeCollect inlineB rel"></view>
-                <view class="inlineB text">关注</view>
+<wxs module="dataFilter" src="../../filter/dataFilter.wxs"></wxs>
+<view>
+    <view class="storeDetailHeader p20 rel" style="background-image:url('{{storeDetail.background}}');">
+        <view class="rel storeSearchWrap">
+            <view class="storeSearch" bindtap="storeSearchFunc">
+                <view class="icon i-search rel mr10 inlineB"></view>
+                <view class="fs28 Cf inlineB">搜索店铺内宝贝</view>
             </view>
-            <view>{{storeDetail.attention}}人关注</view>
+            <view class="abs icon i-class"></view>
+            <view class="abs icon i-storeNav"></view>
+        </view>
+        <view class="clearfix storeHeader abs">
+            <image class="fl" src="{{storeDetail.shoppic}}" />
+            <view class="fs24 Cf fl shopname ml20">{{storeDetail.shopname}}</view>
+            <view class="fr fs22 Cf tc rel" style="top:4rpx;">
+                <view class="storeCollectBtn mb10" bindtap="storeCollectFunc">
+                    <view class="icon i-storeCollect inlineB rel"></view>
+                    <view class="inlineB text">关注</view>
+                </view>
+                <view>{{storeDetail.attention}}人关注</view>
+            </view>
         </view>
     </view>
+    <view class="storeNav clearfix bgF mb1 C3 fs26 tc">
+        <view class="fl rel {{isActive ==0?'active' : ''}}" data-id="0" bindtap="storeNavFunc">店铺首页</view>
+        <view class="fl rel {{isActive ==1?'active' : ''}}" data-id="1" bindtap="storeNavFunc">全部列表</view>
+        <view class="fl rel {{isActive ==2?'active' : ''}}" data-id="2" bindtap="storeNavFunc">信发现</view>
+    </view>
+    <!-- 店铺首页 -->
+    <view wx:if="{{isActive ==0}}">
+        <!-- 优惠券 -->
+        <view class="mb10 bgF" wx:if="{{storeDetail.couponlist.length}}">
+            <view class="couponTitWrap bgF rel">
+                <view class="couponTit rel bgF">
+                    <image class="block" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALgAAAAhCAYAAABqWmFMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2NDhkOGRjZS1lODYwLTczNDQtODhiZS02NGFhOWIzNTM4MzQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6REI0RTlBQkZFMTlBMTFFNzg2NzFBOUJFRkVFQjdCNzEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6REI0RTlBQkVFMTlBMTFFNzg2NzFBOUJFRkVFQjdCNzEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ODcwZWU0M2EtMDg2OS1jZDQ4LTkwOGYtM2Y0MjA1NGEyZjljIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0OGQ4ZGNlLWU4NjAtNzM0NC04OGJlLTY0YWE5YjM1MzgzNCIv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" />
+                </view>
+                <view class="couponTitLine"></view>
+            </view>
+            <view class="couponLists p20">
+                <view class="couponItem Cf fs22 fl {{item.isuse==0?'couponItemUse' : 'couponItemUsed'}}" wx:for="{{storeDetail.couponlist}}" wx:for-index="index" wx:key="key">
+                    <view class="fs24 mb10">
+                        ¥<text class="fs34 ml10">{{item.mount}}</text>
+                    </view>
+                    <view>{{item.condition}}</view>
+                    <view>有效期{{item.days}}天</view>
+                </view>
+            </view>
+        </view>
+        <!-- 活动专区 -->
+        <view wx:if="{{storeDetail.activity.length}}">
+            <!-- <navigator url="../"> -->
+                <view class="proParam mt20 bgF clearfix C3 fs28 p2515">
+                    <view class="fl rel" style="padding-right:55rpx;overflow:hidden;">活动专区<view class="icon i-act inlineB abs" style="top:0rpx;right:0rpx;"></view></view>
+                    <view class="fr">
+                        <view class="inlineB C9 fs22">查看更多</view>
+                        <view class="inlineB icon i-right rel"></view>
+                    </view>
+                </view>
+            <!-- </navigator> -->
+            <view class="evboybuyLists comProLists clearfix mb10">
+                <view wx:for="{{storeDetail.activity}}" wx:for-index="index" wx:key="key" bindtap="goProDetail" data-id="{{item.id}}" class="comProItem fl bgF mt10">
+                    <view class="comProImageWrap">
+                        <image class="" src="{{item.pic}}" lazy-load="true"/>
+                    </view>
+                    <view class="comProContWrap p15">
+                        <view class="fs26 C0 pb10">{{dataFilter.getText(item.productname,25)}}</view>
+                        <view class="tr fs C9 fs24 pb10">{{item.placedelivery}}</view>
+                        <view class="clearfix">
+                            <view class="fl orange fs30">¥{{item.currentprice}}</view>
+                            <view class="fr C6 fs24">{{item.sale}}件已售</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 推荐专区 -->
+        <view wx:if="{{storeDetail.recommend.length}}">
+            <!-- <navigator url="../"> -->
+                <view class="proParam mt20 bgF clearfix C3 fs28 p2515">
+                    <view class="fl rel" style="padding-right:55rpx;overflow:hidden;">推荐专区<view class="icon i-act inlineB abs" style="top:0rpx;right:0rpx;"></view></view>
+                    <view class="fr">
+                        <view class="inlineB C9 fs22">查看更多</view>
+                        <view class="inlineB icon i-right rel"></view>
+                    </view>
+                </view>
+            <!-- </navigator> -->
+            <view class="evboybuyLists comProLists clearfix mb10">
+                <view wx:for="{{storeDetail.recommend}}" wx:for-index="index" wx:key="key" bindtap="goProDetail" data-id="{{item.id}}" class="comProItem fl bgF mt10">
+                    <view class="comProImageWrap">
+                        <image class="" src="{{item.pic}}" lazy-load="true"/>
+                    </view>
+                    <view class="comProContWrap p15">
+                        <view class="fs26 C0 pb10">{{dataFilter.getText(item.productname,25)}}</view>
+                        <view class="tr fs C9 fs24 pb10">{{item.placedelivery}}</view>
+                        <view class="clearfix">
+                            <view class="fl orange fs30">¥{{item.currentprice}}</view>
+                            <view class="fr C6 fs24">{{item.sale}}件已售</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!--新品上架-->
+        <view wx:if="{{storeDetail.newpro.length}}">
+            <view class="indexTit rel bgF tc pt20 pb20">
+                <view class="bgF rel">
+                    <view class="indexTitIcon bgO rel tc inlineB mr15">
+                        <view class="icon i-hot"></view>
+                    </view>
+                    <text class="fs30 orange">新品上架</text>
+                </view>
+                <view class="indexTitLine abs bgO"></view>
+            </view>
+            <view class="evboybuyLists comProLists clearfix mb10">
+                <view wx:for="{{storeDetail.newpro}}" wx:for-index="index" wx:key="key" bindtap="goProDetail" data-id="{{item.id}}" class="comProItem fl bgF mt10">
+                    <view class="comProImageWrap">
+                        <image class="" src="{{item.pic}}" lazy-load="true"/>
+                    </view>
+                    <view class="comProContWrap p15">
+                        <view class="fs26 C0 pb10">{{dataFilter.getText(item.productname,25)}}</view>
+                        <view class="tr fs C9 fs24 pb10">{{item.placedelivery}}</view>
+                        <view class="clearfix">
+                            <view class="fl orange fs30">¥{{item.currentprice}}</view>
+                            <view class="fr C6 fs24">{{item.sale}}件已售</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 店铺内容 -->
+        <view>
+            <import src="../../wxParse/wxParse.wxml"/>
+            <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+        </view>
+    </view>
+    <!-- 全部列表 -->
+    <view wx:if="{{isActive ==1}}">2</view>
+    <!-- 信发现 -->
+    <view wx:if="{{isActive ==2}}">3</view>
 </view>
-<view class="storeNav clearfix bgF mb1 C3 fs26 tc">
-    <view class="fl {{isActive ==0?'active' : ''}}" data-id="0" bindtap="storeNavFunc">店铺首页</view>
-    <view class="fl {{isActive ==1?'active' : ''}}" data-id="1" bindtap="storeNavFunc">全部列表</view>
-    <view class="fl {{isActive ==2?'active' : ''}}" data-id="2" bindtap="storeNavFunc">信发现</view>
-</view>
-<view wx:show="{{isActive ==0}}">1</view>
-<view wx:show="{{isActive ==1}}">2</view>
-<view wx:show="{{isActive ==2}}">3</view>
+<view class="fix"></view>
