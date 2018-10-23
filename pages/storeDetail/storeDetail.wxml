@@ -1,5 +1,5 @@
 <wxs module="dataFilter" src="../../filter/dataFilter.wxs"></wxs>
-<view>
+<view class="padding-bottom:90rpx;">
     <view class="storeDetailHeader p20 rel" style="background-image:url('{{storeDetail.background}}');">
         <view class="rel storeSearchWrap">
             <view class="storeSearch" bindtap="storeSearchFunc">
@@ -104,8 +104,8 @@
         <view wx:if="{{storeDetail.newpro.length}}">
             <view class="indexTit rel bgF tc pt20 pb20">
                 <view class="bgF rel">
-                    <view class="indexTitIcon bgO rel tc inlineB mr15">
-                        <view class="icon i-hot"></view>
+                    <view class="rel tc inlineB mr15" style="top:5px;">
+                        <view class="icon i-newPro"></view>
                     </view>
                     <text class="fs30 orange">新品上架</text>
                 </view>
@@ -133,9 +133,27 @@
             <template is="wxParse" data="{{wxParseData:article.nodes}}" />
         </view>
     </view>
-    <!-- 全部列表 -->
-    <view wx:if="{{isActive ==1}}">2</view>
+    <!-- 全部列表(店铺内列表) -->
+    <scroll-view wx:if="{{isActive ==1}}" scroll-y="true" scroll-with-animation="true" style='height:1400rpx;' bindscrolltolower="onReachBottomFunc">
+        <view class="evboybuyLists comProLists clearfix mb10">
+            <view wx:for="{{shopProLists}}" wx:for-index="index" wx:key="key" bindtap="goProDetail" data-id="{{item.id}}" class="comProItem fl bgF mt10">
+                <view class="comProImageWrap">
+                    <image class="" src="{{item.pic}}" lazy-load="true"/>
+                </view>
+                <view class="comProContWrap p15">
+                    <view class="fs26 C0 pb10">{{dataFilter.getText(item.productname,25)}}</view>
+                    <view class="tr fs C9 fs24 pb10">{{item.placedelivery}}</view>
+                    <view class="clearfix">
+                        <view class="fl orange fs30">¥{{item.currentprice}}</view>
+                        <view class="fr C6 fs24">{{item.sale}}件已售</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
     <!-- 信发现 -->
-    <view wx:if="{{isActive ==2}}">3</view>
+    <view wx:if="{{isActive ==2}}"></view>
 </view>
-<view class="fix"></view>
+<view class="fix storeFooter bgF">
+
+</view>
