@@ -377,6 +377,11 @@ page{
     min-height:74rpx;
 }
 /*搜索*/
+.searchFix{
+    width:100%;
+    top:0;
+    left:0;
+}
 .searchWrap{
     width:84%;
     margin:0 auto;

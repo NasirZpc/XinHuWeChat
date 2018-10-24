@@ -98,10 +98,9 @@ Page({
                 'content-type': 'application/x-www-form-urlencoded'
             },
             data: {
-                token: '',
                 productname:this.data.searchText,
                 sort:this.data.sort,
-                Pagesize: 6,
+                pagesize: 6,
                 p: this.data.goodsPage
             },
             success: (res) => {

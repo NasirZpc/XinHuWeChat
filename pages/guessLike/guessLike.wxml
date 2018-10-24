@@ -1,3 +1,4 @@
+<wxs module="dataFilter" src="../../filter/dataFilter.wxs"></wxs>
 <view class="evboybuyLists comProLists clearfix mb10">
     <view wx:for="{{guesslikeLists}}" wx:for-index="index" wx:key="key" bindtap="goProDetail" data-id="{{item.id}}" class="comProItem fl bgF mt10">
         <view class="comProImageWrap">

@@ -1,0 +1,41 @@
+<wxs module="dataFilter" src="../../filter/dataFilter.wxs"></wxs>
+<view class="fix searchFix bgF">
+    <!-- 搜索框 -->
+    <view class="bgO pb20 clearfix pl p15">
+        <view class="searchWrap bgO1 rel" bindtap="goProSearch" style="margin:0 auto;">
+            <view class="icon i-search abs inlineB fl"></view>
+            <input disabled='disabled' placeholder="请输入搜索内容" class="fs28 Cf fl" placeholder-class="Cf"  />
+        </view>
+    </view>
+    <!-- 排序 -->
+    <view class="sortWrap clearfix C6 fs28 tc bgF {{(scrollTop>72 && isActive==1) ? 'isFixSort' : ''}}">
+        <view class="fl rel {{curActive == 0?'curActive' : ''}}" data-type="0" bindtap="sortFunc">
+            综合排序
+        </view>
+        <view class="fl rel {{curActive == 1?'curActive' : ''}}" data-type="1" bindtap="sortFunc">
+            销量
+        </view>
+        <view class="fl rel {{curActive == 2?'curActive' : ''}}" data-type="2" bindtap="sortFunc">
+            新品
+        </view>
+        <view class="fl rel {{curActive == 3?'curActive' : ''}}" data-type="3" bindtap="sortFunc">
+            价格
+            <view class="icon i-sort rel inlineB {{ sort == 4? 'i-sortup' :  sort == 5?'i-sortdown':''}}"></view>
+        </view>
+    </view>
+</view>
+<view class="evboybuyLists comProLists clearfix mb10" style="padding-top:165rpx;">
+    <view wx:for="{{proLists}}" wx:for-index="index" wx:key="key" bindtap="goProDetail" data-id="{{item.id}}" class="comProItem fl bgF mt10">
+        <view class="comProImageWrap">
+            <image class="" src="{{item.pic}}" lazy-load="true"/>
+        </view>
+        <view class="comProContWrap p15">
+            <view class="fs26 C0 pb10">{{dataFilter.getText(item.productname,25)}}</view>
+            <view class="tr fs C9 fs24 pb10">{{item.placedelivery}}</view>
+            <view class="clearfix">
+                <view class="fl orange fs30">¥{{item.currentprice}}</view>
+                <view class="fr C6 fs24">{{item.sale}}件已售</view>
+            </view>
+        </view>
+    </view>
+</view>

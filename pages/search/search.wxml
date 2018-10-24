@@ -1,4 +1,3 @@
-<wxs module="dataFilter" src="../../filter/dataFilter.wxs"></wxs>
 <!-- 搜索框 -->
 <view class="bgO pb20 clearfix pl p15">
     <view class="searchWrap bgO1 rel fl">

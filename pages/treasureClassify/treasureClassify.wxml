@@ -1,4 +1,4 @@
-<view class="TCItem clearfix bgF p20 C3 fs28 mt20 mb20 {{state == -1 ? 'active' : ''}}"  bindtap="goProLists" data-shopcatid="-1">
+<view class="TCItem clearfix bgF p20 C3 fs28 mt20 mb20 {{state == '' ? 'active' : ''}}"  bindtap="goProLists" data-shopcatid="">
     <view class="fl">全部分类</view>
     <view class="fr icon i-right rel"></view>
 </view>
