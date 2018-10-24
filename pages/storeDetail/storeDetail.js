@@ -204,5 +204,11 @@ Page({
         wx.navigateTo({
            url: "../treasureClassify/treasureClassify?shopid="+e.currentTarget.dataset.id
         });
-    }
+    },
+    //跳转到商品搜索页
+    goProSearch(e){
+        wx.navigateTo({
+           url: "../proSearch/proSearch?shopid="+e.currentTarget.dataset.id +"&shopcatid="+e.currentTarget.dataset.shopcatid 
+        });
+    },
 })

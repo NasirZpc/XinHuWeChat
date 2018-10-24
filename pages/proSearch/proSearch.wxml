@@ -1,1 +1,17 @@
-
+<!-- 搜索框 -->
+<view class="bgO pb20 clearfix pl p15">
+    <view class="searchWrap bgO1 rel fl">
+        <view class="icon i-search abs inlineB fl"></view>
+        <input placeholder="请输入搜索内容" class="fs28 Cf fl" placeholder-class="Cf" bindinput="inputSearchText"  />
+    </view>
+    <view class="searchBtn fs30 Cf fl tc" bindtap="searchFunc">搜索</view>
+</view>
+<view class="searchHistroy">
+    <view class="clearfix p15">
+        <view class="fl C3 fs28">搜索历史</view>
+        <view class="fr icon i-delete" bindtap="delHistroy"></view>
+    </view>
+    <view class="searchHistroyLists clearfix p15">
+        <view class="C9 fs28 fl" wx:for="{{searchHistroyLists}}" wx:for-index="index" wx:key="key" bindtap="goProLists" data-txt="{{item.searchText}}" data-type="{{item.searchType}}">{{item.searchText}}</view>
+    </view>
+</view>

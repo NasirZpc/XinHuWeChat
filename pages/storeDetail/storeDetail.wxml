@@ -2,7 +2,7 @@
 <scroll-view bindscroll="scroll" scroll-y="true" scroll-with-animation="true" style='height:{{windowHeight}}rpx;padding-bottom:90rpx;' bindscrolltolower="onReachBottomFunc">
     <view class="storeDetailHeader rel" style="background-image:url('{{storeDetail.background}}');">
         <view class="rel storeSearchWrap p20 {{scrollTop>10 ? 'isFix' : ''}}" style="background:rgba(255,255,255,{{scrollTop/60}})">
-            <view class="storeSearch" bindtap="storeSearchFunc">
+            <view class="storeSearch" bindtap="goProSearch" data-id="{{storeDetail.shopid}}" data-shopcatid="">
                 <view class="icon i-search rel mr10 inlineB"></view>
                 <view class="fs28 Cf inlineB">搜索店铺内宝贝</view>
             </view>

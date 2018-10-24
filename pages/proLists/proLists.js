@@ -1,4 +1,5 @@
 const app = getApp()
+
 Page({
     data:{
         shopid:'',
@@ -12,8 +13,13 @@ Page({
     onLoad(option) {
         this.setData({
             shopid:option.shopid,
-            shopcatid:option.shopcatid
+            shopcatid:option.shopcatid,
         })
+        if(option.txt){
+            this.setData({
+                productname:option.txt
+            })
+        }
         this.proListsFunc()
     },
     proListsFunc(){
@@ -114,10 +120,10 @@ Page({
         }
         this.proListsFunc();
     },
-    //商品详情页
-    goProDetail(e){
+    //跳转到商品搜索页
+    goProSearch(e){
         wx.navigateTo({
-           url: "../proDetail/proDetail?proid="+e.currentTarget.dataset.id + '&isactivity=0'
+           url: "../proSearch/proSearch?shopid="+this.data.shopid +"&shopcatid="+this.data.shopcatid
         });
     },
 })

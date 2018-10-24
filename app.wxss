@@ -413,6 +413,12 @@ page{
     border-color:#ff5c00;
     color:#ff5c00;
 }
+.searchHistroyLists>view{
+    background:#ddd;
+    padding:10rpx 20rpx;
+    border-radius:5rpx;
+    margin:0 15rpx 10rpx 0;
+}
 /*评论列表*/
 .hasComment .headImg{
     width:80rpx;
