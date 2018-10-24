@@ -1,7 +1,7 @@
 <wxs module="dataFilter" src="../../filter/dataFilter.wxs"></wxs>
 <scroll-view bindscroll="scroll" scroll-y="true" scroll-with-animation="true" style='height:{{windowHeight}}rpx;padding-bottom:90rpx;' bindscrolltolower="onReachBottomFunc">
     <view class="storeDetailHeader rel" style="background-image:url('{{storeDetail.background}}');">
-        <view class="rel storeSearchWrap p20 {{isFix ? 'isFix' : ''}}" style="background:rgba(255,255,255,{{bgOpacity}})">
+        <view class="rel storeSearchWrap p20 {{scrollTop>10 ? 'isFix' : ''}}" style="background:rgba(255,255,255,{{scrollTop/60}})">
             <view class="storeSearch" bindtap="storeSearchFunc">
                 <view class="icon i-search rel mr10 inlineB"></view>
                 <view class="fs28 Cf inlineB">搜索店铺内宝贝</view>
@@ -21,13 +21,13 @@
             </view>
         </view>
     </view>
-    <view class="storeNav clearfix bgF mb1 C3 fs26 tc {{isFixNav ? 'isFixNav' : ''}}">
+    <view class="storeNav clearfix bgF mb1 C3 fs26 tc {{scrollTop>72 ? 'isFixNav' : ''}}">
         <view class="fl rel {{isActive ==0?'active' : ''}}" data-id="0" bindtap="storeNavFunc">店铺首页</view>
         <view class="fl rel {{isActive ==1?'active' : ''}}" data-id="1" bindtap="storeNavFunc">全部列表</view>
         <view class="fl rel {{isActive ==2?'active' : ''}}" data-id="2" bindtap="storeNavFunc">信发现</view>
     </view>
     <!-- 店铺首页 -->
-    <view wx:if="{{isActive ==0}}" style="padding-top:{{isFixNav ? '110rpx' : '0'}}">
+    <view wx:if="{{isActive ==0}}" style="padding-top:{{(scrollTop>72 && isActive == 0) ? '110rpx' : '0'}}">
         <!-- 优惠券 -->
         <view class="mb10 bgF" wx:if="{{storeDetail.couponlist.length}}">
             <view class="couponTitWrap bgF rel">
@@ -134,9 +134,9 @@
         </view>
     </view>
     <!-- 全部列表(店铺内列表) -->
-    <view wx:if="{{isActive ==1}}" style="padding-top:{{isFixNav ? '180rpx' : '0'}}">
+    <view wx:if="{{isActive ==1}}" style="padding-top:{{(scrollTop>72 && isActive == 1) ? '180rpx' : '0'}}">
         <!-- 排序 -->
-        <view class="sortWrap clearfix C6 fs28 tc bgF {{isFixSort ? 'isFixSort' : ''}}">
+        <view class="sortWrap clearfix C6 fs28 tc bgF {{(scrollTop>72 && isActive==1) ? 'isFixSort' : ''}}">
             <view class="fl rel {{curActive == 0?'curActive' : ''}}" data-type="0" bindtap="sortFunc">
                 综合排序
             </view>

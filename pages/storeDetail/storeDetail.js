@@ -8,10 +8,7 @@ Page({
         page:1,
         shopProLists:[],
         windowHeight:'',
-        isFix : false,
-        isFixNav : false,
-        isFixSort : false,
-        bgOpacity:0,
+        scrollTop:0,
         sort : 1,
         curActive : 0,
     },
@@ -172,7 +169,6 @@ Page({
         var id = e.target.dataset.id;
         this.setData({
             isActive:id,
-            // isFixSort:false,
         });
         if(id == 1){
             if(this.data.shopProLists.length == 0){
@@ -187,35 +183,9 @@ Page({
     scroll(e) {
         var scrollTop = e.detail.scrollTop;
         console.log(scrollTop)
-        if(scrollTop>10){
-            this.setData({
-                isFix:true,
-                bgOpacity:scrollTop/60
-            })
-        }else{
-            this.setData({
-                isFix:false,
-                bgOpacity:scrollTop/60
-            })
-        }
-        if(scrollTop>72){
-            this.setData({
-                isFixNav:true,
-            })
-            if(this.data.isActive == 1){
-                this.setData({
-                    isFixSort:true,
-                })
-            }
-        }else{
-            this.setData({
-                isFixNav:false,
-            })
-            if(this.data.isActive == 1){
-                this.setData({
-                    isFixSort:false,
-                })
-            }
-        }
+        this.setData({
+            scrollTop:scrollTop
+        })
+        
     }
 })
