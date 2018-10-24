@@ -1,5 +1,5 @@
 .storeDetailHeader{
-    height:200rpx;
+    height:240rpx;
     background-size: cover;
     background-repeat:no-repeat;
     background-position:center;
@@ -15,7 +15,7 @@
 }
 .i-class,.i-storeNav{
     z-index: 1;
-    top:10rpx;
+    top:30rpx;
 }
 .i-class{
     right:85rpx;
@@ -26,6 +26,7 @@
 .storeHeader{
     width:94.5%;
     bottom:20rpx;
+    left:2.75%;
 }
 
 .storeHeader>image{
@@ -153,5 +154,38 @@
 }
 /**/
 .isFix{
-    position:;
+    position:fixed;
+    width:94.55%;
+    z-index:3;
+}
+.isFix .storeSearch{
+    background:#eee;
+
+}
+.isFix .storeSearch .fs28{
+    color:#999;
+}
+.isFix .i-search{
+    background-position: -183rpx -152rpx;
+}
+.isFix .i-class{
+    background-position: -5rpx -292rpx;
+}
+.isFix .i-storeNav{
+    background-position: -59rpx -273rpx;
+}
+.isFixNav,.isFixSort{
+    position:fixed;
+    width:100%;
+    z-index: 4;
+}
+.isFixNav{
+    top:100rpx;
+    left:0;
+    border-top:1rpx solid #eee;
+}
+.isFixSort{
+    top:180rpx;
+    left:0;
+    border-top:1rpx solid #eee;
 }
