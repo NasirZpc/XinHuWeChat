@@ -6,34 +6,7 @@
 .searchFixTop{
     padding-top: 245rpx;
 }
-.sortWrap{
-    border-bottom:1rpx solid #f4f4f4;
-}
-.sortWrap>view{
-    width:25%;
-    height:70rpx;
-    line-height: 70rpx
-}
-.sortWrap>view:after{
-    content:"";
-    display: block;
-    width:1px;
-    height:60%;
-    position: absolute;
-    top:20%;
-    right:0;
-    background:#eee;
-}
-.sortWrap>view:last-child:after{
-    display: none;
-}
-.sortWrap>view.curActive{
-    color:#ff5c00;
-}
-.sortWrap>view .i-sort{
-    top:8rpx;
-    margin-left:5rpx;
-}
+
 /*店铺列表*/
 .searchStoreTop{
     padding-top: 187rpx;

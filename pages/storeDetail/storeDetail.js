@@ -8,23 +8,26 @@ Page({
         page:1,
         shopProLists:[],
         windowHeight:'',
+        isFix : false,
+        sort : 1,
+        curActive : 0,
     },
     onLoad(option) {
         this.setData({
             shopid:option.shopid
         })
         var that = this
-        // wx.getSystemInfo({
-        //     success: function (res) {
-        //         let clientHeight = res.windowHeight,
-        //             clientWidth = res.windowWidth,
-        //             rpxR = 750 / clientWidth;
-        //         var calc = (clientHeight * rpxR);
-        //         that.setData({    
-        //             windowHeight: calc
-        //         });
-        //     }
-        // });
+        wx.getSystemInfo({
+            success: function (res) {
+                let clientHeight = res.windowHeight,
+                    clientWidth = res.windowWidth,
+                    rpxR = 750 / clientWidth;
+                var calc = (clientHeight * rpxR);
+                that.setData({    
+                    windowHeight: calc
+                });
+            }
+        });
         this.storeDetailFunc()
     },
     storeDetailFunc(){
@@ -68,6 +71,9 @@ Page({
     },
     //商铺内商品列表
     shopProFunc(){
+        wx.showLoading({
+            title: '玩命加载中',
+        })
         wx.request({
             url: app.baseUrl + '/index.php/Product/shoppro',
             method: "POST",
@@ -76,7 +82,7 @@ Page({
             },
             data: {
                 shopid:this.data.shopid,
-                sort:'',
+                sort:this.data.sort,
                 pagesize: 6,
                 p: this.data.page,
                 shopcatid:'',
@@ -108,16 +114,49 @@ Page({
     },
     //上拉加载
     onReachBottomFunc() {
-        var that = this;
-        // 显示加载图标
-        wx.showLoading({
-            title: '玩命加载中',
+        if(this.data.isActive == 1){
+            var that = this;
+            // 显示加载图标
+            wx.showLoading({
+                title: '玩命加载中',
+            })
+            // 页数+1
+            this.data.page = this.data.page + 1;
+            setTimeout(()=>{
+                this.shopProFunc()
+            },500)
+        }
+    },
+    sortFunc(e){
+        this.setData({
+            curActive : e.currentTarget.dataset.type,
+            page : 1,
+            shopProLists : [],
         })
-        // 页数+1
-        this.data.page = this.data.page + 1;
-        setTimeout(()=>{
-            this.shopProFunc()
-        },500)
+        if(this.data.curActive == 0){
+            this.setData({
+                sort : 1,
+            })
+        }else if(this.data.curActive == 1){
+            this.setData({
+                sort : 2,
+            })
+        }else if(this.data.curActive == 2){
+            this.setData({
+                sort : 3,
+            })
+        }else if(this.data.curActive == 3){
+            if(this.data.sort == 5){
+                this.setData({
+                    sort : 4,
+                })
+            }else{
+                this.setData({
+                    sort : 5,
+                })
+            }
+        }
+        this.shopProFunc();
     },
     //商品详情页
     goProDetail(e){
@@ -139,5 +178,14 @@ Page({
                 this.shopProFunc()
             }
         }
+    },
+    //监听滚动条
+    scroll(e) {
+        var scrollTop = e.detail.scrollTop;
+        console.log(scrollTop)
+        if(scrollTop>0){}
+        // this.setData({
+        //     scrollTop:e.detail.scrollTop
+        // })
     }
 })

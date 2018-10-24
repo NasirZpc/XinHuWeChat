@@ -205,7 +205,7 @@ page{
     width: 34rpx;
     height: 34rpx;
     background-size:200rpx auto;
-    background-position: -90rpx 0rpx;
+    background-position: -92rpx 0rpx;
     top:2rpx;
 }
 .i-search{
@@ -423,4 +423,33 @@ page{
     width:25%;
     padding:10rpx;
     margin:0 auto;
+}
+/*排序*/
+.sortWrap{
+    border-bottom:1rpx solid #f4f4f4;
+}
+.sortWrap>view{
+    width:25%;
+    height:70rpx;
+    line-height: 70rpx
+}
+.sortWrap>view:after{
+    content:"";
+    display: block;
+    width:1px;
+    height:60%;
+    position: absolute;
+    top:20%;
+    right:0;
+    background:#eee;
+}
+.sortWrap>view:last-child:after{
+    display: none;
+}
+.sortWrap>view.curActive{
+    color:#ff5c00;
+}
+.sortWrap>view .i-sort{
+    top:8rpx;
+    margin-left:5rpx;
 }

@@ -151,3 +151,7 @@
 .storeFooter>view .icon{
     margin:10rpx auto 0rpx;
 }
+/**/
+.isFix{
+    position:;
+}
