@@ -1,3 +1,4 @@
+<wxs module="dataFilter" src="../../filter/dataFilter.wxs"></wxs>
 <!-- 搜索结果 -->
 <view class="fix searchFix bgF">
     <!-- 搜索框 -->
