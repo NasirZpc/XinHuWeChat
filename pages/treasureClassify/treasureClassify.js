@@ -49,7 +49,6 @@ Page({
         this.setData({
             state: e.currentTarget.dataset.shopcatid,
         })
-
         wx.navigateTo({
            url: "../proLists/proLists?shopid="+this.data.shopid+"&shopcatid="+e.currentTarget.dataset.shopcatid
         });

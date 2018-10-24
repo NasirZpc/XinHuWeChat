@@ -122,7 +122,7 @@ Page({
     },
     //跳转到商品搜索页
     goProSearch(e){
-        wx.navigateTo({
+        wx.redirectTo({
            url: "../proSearch/proSearch?shopid="+this.data.shopid +"&shopcatid="+this.data.shopcatid
         });
     },
