@@ -15,7 +15,8 @@
         "pages/storeDetail/storeDetail",
         "pages/treasureClassify/treasureClassify",
         "pages/proLists/proLists",
-        "pages/proSearch/proSearch"
+        "pages/proSearch/proSearch",
+        "pages/proClassLists/proClassLists"
     ],
     "window": {
         "navigationBarTitleText": "信户商城",
