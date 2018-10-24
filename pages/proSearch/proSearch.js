@@ -46,13 +46,13 @@ Page({
             }
         }
         wx.setStorageSync('histroyData1', _histroyData)
-        wx.navigateTo({
+        wx.redirectTo({
            url: "../proLists/proLists?txt="+this.data.searchText+"&shopid="+this.data.shopid+"&shopcatid="+this.data.shopcatid
         });
     },
     //商品详情页
     goProLists(e){
-        wx.navigateTo({
+        wx.redirectTo({
            url: "../proLists/proLists?txt="+e.currentTarget.dataset.txt+"&shopid="+this.data.shopid+"&shopcatid="+this.data.shopcatid
         });
     },
