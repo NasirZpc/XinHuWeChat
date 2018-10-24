@@ -9,6 +9,7 @@ Page({
         recommendStoreLists: [],
         guesslikeLists: [],
         page:1,
+        noMore:false
     },
     onLoad() {
         //获取轮播图
@@ -138,6 +139,15 @@ Page({
             },
             success: (res) => {
                 if (res.data.status == 1) {
+                    if(res.data.data.guesslist.length<6){
+                        this.setData({
+                            noMore:true
+                        })
+                    }else{
+                        this.setData({
+                            noMore:false
+                        })
+                    }
                     var _guesslikeLists = this.data.guesslikeLists;
                     for (var i = 0; i < res.data.data.guesslist.length; i++) {
                         _guesslikeLists.push(res.data.data.guesslist[i]);
@@ -165,16 +175,18 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom() {
-        var that = this;
-        // 显示加载图标
-        wx.showLoading({
-            title: '玩命加载中',
-        })
-        // 页数+1
-        this.data.page = this.data.page + 1;
-        setTimeout(()=>{
-            this.guesslikeFunc()
-        },500)
+        if(!this.data.noMore){
+            var that = this;
+            // 显示加载图标
+            wx.showLoading({
+                title: '玩命加载中',
+            })
+            // 页数+1
+            this.data.page = this.data.page + 1;
+            setTimeout(()=>{
+                this.guesslikeFunc()
+            },500)
+        }
     },
     /*跳转到搜搜索页*/
     goSearchEnter(){

@@ -11,6 +11,7 @@ Page({
         scrollTop:0,
         sort : 1,
         curActive : 0,
+        noMore:false,
     },
     onLoad(option) {
         this.setData({
@@ -89,6 +90,15 @@ Page({
             },
             success: (res) => {
                 if (res.data.status == 1) {
+                    if(res.data.data.length<6){
+                        this.setData({
+                            noMore:true
+                        })
+                    }else{
+                        this.setData({
+                            noMore:false
+                        })
+                    }
                     var _shopProLists = this.data.shopProLists;
                     for (var i = 0; i < res.data.data.length; i++) {
                         _shopProLists.push(res.data.data[i]);
@@ -115,16 +125,18 @@ Page({
     //上拉加载
     onReachBottomFunc() {
         if(this.data.isActive == 1){
-            var that = this;
-            // 显示加载图标
-            wx.showLoading({
-                title: '玩命加载中',
-            })
-            // 页数+1
-            this.data.page = this.data.page + 1;
-            setTimeout(()=>{
-                this.shopProFunc()
-            },500)
+            if(!this.data.noMore){
+                var that = this;
+                // 显示加载图标
+                wx.showLoading({
+                    title: '玩命加载中',
+                })
+                // 页数+1
+                this.data.page = this.data.page + 1;
+                setTimeout(()=>{
+                    this.shopProFunc()
+                },500)
+            }
         }
     },
     sortFunc(e){

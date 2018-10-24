@@ -3,7 +3,8 @@ const app = getApp()
 Page({
     data:{
         page:1,
-        storeLists:[]
+        storeLists:[],
+        noMore:false
     },
     onLoad(option) {
         this.storeListsFunc()
@@ -26,6 +27,15 @@ Page({
             },
             success: (res) => {
                 if (res.data.status == 1) {
+                    if(res.data.data.length<6){
+                        this.setData({
+                            noMore:true
+                        })
+                    }else{
+                        this.setData({
+                            noMore:false
+                        })
+                    }
                     var _storeLists = this.data.storeLists;
                     for (var i = 0; i < res.data.data.length; i++) {
                         _storeLists.push(res.data.data[i]);
@@ -50,16 +60,18 @@ Page({
     },
     //上拉加载
     onReachBottom() {
-        var that = this;
-        // 显示加载图标
-        wx.showLoading({
-            title: '玩命加载中',
-        })
-        // 页数+1
-        this.data.page = this.data.page + 1;
-        setTimeout(()=>{
-            this.storeListsFunc()
-        },500)
+        if(!this.data.noMore){
+            var that = this;
+            // 显示加载图标
+            wx.showLoading({
+                title: '玩命加载中',
+            })
+            // 页数+1
+            this.data.page = this.data.page + 1;
+            setTimeout(()=>{
+                this.storeListsFunc()
+            },500)
+        }
     },
     //商品详情页
     goProDetail(e){

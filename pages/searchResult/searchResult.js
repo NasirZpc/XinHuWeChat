@@ -10,6 +10,8 @@ Page({
         goodsPage:1,//商品列表分页
         storeLists : [],//店铺列表
         storePage:1,//店铺列表分页
+        noMorePro:false,
+        noMoreStore:false,
     },
     onLoad(option) {
         this.setData({
@@ -105,6 +107,15 @@ Page({
             },
             success: (res) => {
                 if (res.data.status == 1) {
+                    if(res.data.data.prolist.length<6){
+                        this.setData({
+                            noMorePro:true
+                        })
+                    }else{
+                        this.setData({
+                            noMorePro:false
+                        })
+                    }
                     var _goodsLists = this.data.goodsLists;
                     for (var i = 0; i < res.data.data.prolist.length; i++) {
                         _goodsLists.push(res.data.data.prolist[i]);
@@ -145,6 +156,15 @@ Page({
             },
             success: (res) => {
                 if (res.data.status == 1) {
+                    if(res.data.data.length<6){
+                        this.setData({
+                            noMoreStore:true
+                        })
+                    }else{
+                        this.setData({
+                            noMoreStore:false
+                        })
+                    }
                     var _storeLists = this.data.storeLists;
                     for (var i = 0; i < res.data.data.length; i++) {
                         _storeLists.push(res.data.data[i]);
@@ -170,18 +190,22 @@ Page({
     },
     onReachBottom() {
         if(this.data.active){
-            var that = this;
-            // 页数+1
-            this.data.goodsPage = this.data.goodsPage + 1;
-            setTimeout(()=>{
-                this.goodsListsFunc()
-            },500)
+            if(!this.data.noMorePro){
+                var that = this;
+                // 页数+1
+                this.data.goodsPage = this.data.goodsPage + 1;
+                setTimeout(()=>{
+                    this.goodsListsFunc()
+                },500)
+            }
         }else{
-            var that = this;
-            this.data.storePage = this.data.storePage + 1;
-            setTimeout(()=>{
-                this.storeListsFunc()
-            },500)
+            if(!this.data.noMoreStore){
+                var that = this;
+                this.data.storePage = this.data.storePage + 1;
+                setTimeout(()=>{
+                    this.storeListsFunc()
+                },500)
+            }
         }
     },
     //跳转店铺详情页
