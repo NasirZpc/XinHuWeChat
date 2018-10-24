@@ -206,4 +206,17 @@ Page({
            url: "../storeDetail/storeDetail?shopid="+e.currentTarget.dataset.id
         });
     },
+    goFastEnter(e){
+        if(e.currentTarget.dataset.id == 10){
+            wx.navigateTo({
+               url: "../proClassLists/proClassLists?activityid="+e.currentTarget.dataset.activityid+"&type="+e.currentTarget.dataset.type
+            });
+        }
+    },
+    //跳转到商品分类列表页
+    goProClassLists(e){
+        wx.navigateTo({
+           url: "../proClassLists/proClassLists"
+        });
+    },
 })

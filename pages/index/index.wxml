@@ -23,7 +23,7 @@
 </view>
 <!-- 快速入口2 -->
 <view class="fastEnterLists2 clearfix bgF pb20 pt20">
-    <view wx:for="{{fastEnterLists2}}" wx:for-index="index" wx:key="key" bindtap="goFastEnter2" data-id="{{item.id}}" data-cid="{{item.cid}}" class="fastEnterItem2 fl tc">
+    <view wx:for="{{fastEnterLists2}}" wx:for-index="index" wx:key="key" bindtap="goProClassLists" data-id="{{item.id}}" data-cid="{{item.cid}}" class="fastEnterItem2 fl tc">
         <image class="" src="{{item.img}}" />
         <view class="C6 fs24">{{item.title}}</view>
     </view>
