@@ -126,4 +126,10 @@ Page({
            url: "../proSearch/proSearch?shopid="+this.data.shopid +"&shopcatid="+this.data.shopcatid
         });
     },
+    //跳转到商品详情页
+    goProDetail(e){
+        wx.navigateTo({
+           url: "../proDetail/proDetail?proid="+e.currentTarget.dataset.id + '&isactivity=0'
+        });
+    },
 })
