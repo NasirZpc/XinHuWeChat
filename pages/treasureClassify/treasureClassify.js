@@ -2,7 +2,8 @@ const app = getApp()
 Page({
     data:{
         shopid:'',
-        treasureClassify:[]
+        treasureClassify:[],
+        state:'-2',
     },
     onLoad(option) {
         this.setData({
@@ -45,6 +46,10 @@ Page({
     },
     //跳转到商品分类列表
     goProLists(e){
+        this.setData({
+            state: e.currentTarget.dataset.shopcatid,
+        })
+
         wx.navigateTo({
            url: "../proLists/proLists?shopid="+this.data.shopid+"&shopcatid="+e.currentTarget.dataset.shopcatid
         });

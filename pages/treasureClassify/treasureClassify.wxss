@@ -1,7 +1,25 @@
 .TCItem .i-right{
     top:2rpx;
 }
+
+.TCItem{
+    border-left:4rpx solid #fff;
+}
+.TCItem.active{
+    border-color:#ff5c00;
+}
 .childItem{
     background:#f4f4f4;
-    width:50%;
+    width:49.8%;
+    height:76rpx;
+    line-height: 76rpx;
+    margin-right: 0.4%;
+    border-bottom: 4rpx solid #f4f4f4;
+    margin-bottom: 5rpx;
+}
+.childItem:nth-of-type(2n){
+    margin-right:0;
+}
+.childItem.active{
+    border-color:#ff5c00;
 }
