@@ -180,12 +180,12 @@
     z-index: 4;
 }
 .isFixNav{
-    top:100rpx;
+    top:96rpx;
     left:0;
     border-top:1rpx solid #eee;
 }
 .isFixSort{
-    top:180rpx;
+    top:176rpx;
     left:0;
     border-top:1rpx solid #eee;
 }

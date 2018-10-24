@@ -182,10 +182,9 @@ Page({
     //监听滚动条
     scroll(e) {
         var scrollTop = e.detail.scrollTop;
-        console.log(scrollTop)
         this.setData({
             scrollTop:scrollTop
         })
-        
+
     }
 })
