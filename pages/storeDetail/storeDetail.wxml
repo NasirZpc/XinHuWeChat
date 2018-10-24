@@ -6,7 +6,7 @@
                 <view class="icon i-search rel mr10 inlineB"></view>
                 <view class="fs28 Cf inlineB">搜索店铺内宝贝</view>
             </view>
-            <view class="abs icon i-class"></view>
+            <view class="abs icon i-class" bindtap="goTreasureClassify" data-id="{{storeDetail.shopid}}"></view>
             <view class="abs icon i-storeNav"></view>
         </view>
         <view class="clearfix storeHeader abs">
@@ -171,7 +171,7 @@
     <view wx:if="{{isActive ==2}}"></view>
 </scroll-view>
 <view class="fix storeFooter bgF tc C6 fs24">
-    <view class="fl rel">
+    <view class="fl rel" bindtap="goTreasureClassify" data-id="{{storeDetail.shopid}}">
         <view class="icon i-storeClass"></view>
         <view>宝贝分类</view>
     </view>

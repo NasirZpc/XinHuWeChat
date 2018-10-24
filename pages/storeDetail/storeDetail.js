@@ -186,5 +186,11 @@ Page({
             scrollTop:scrollTop
         })
 
+    },
+    //查看宝贝分类
+    goTreasureClassify(e){
+        wx.navigateTo({
+           url: "../treasureClassify/treasureClassify?shopid="+e.currentTarget.dataset.id
+        });
     }
 })

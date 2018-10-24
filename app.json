@@ -12,7 +12,8 @@
         "pages/commentDetail/commentDetail",
         "pages/guessLike/guessLike",
         "pages/storeLists/storeLists",
-        "pages/storeDetail/storeDetail"
+        "pages/storeDetail/storeDetail",
+        "pages/treasureClassify/treasureClassify"
     ],
     "window": {
         "navigationBarTitleText": "信户商城",
