@@ -1,0 +1,21 @@
+<view class="TCItem clearfix bgF p20 C3 fs28 mt20 mb20" bindtap="goProLists" data-shopcatid="">
+    <view class="fl">全部分类</view>
+    <view class="fr icon i-right rel"></view>
+</view>
+<view class="TCItem clearfix bgF C3 fs28 mt1" wx:for="{{treasureClassify}}" wx:for-index="index" wx:key="key">
+    <view class="clearfix p20" wx:if="{{!item.child.length}}" bindtap="goProLists" data-shopcatid="{{item.shopcatid}}">
+        <view class="fl">{{item.shopcatitle}}</view>
+        <view class="fr icon i-right rel"></view>
+    </view>
+    <view wx:if="{{item.child.length}}">
+        <view class="clearfix p20" bindtap="goProLists" data-shopcatid="{{item.shopcatid}}">
+            <view class="fl">{{item.shopcatitle}}</view>
+            <view class="fr fs24 C6">查看全部</view>
+        </view>
+        <view class="clearfix">
+            <view class="fl childItem fs24 C3" wx:for="{{item.child}}" bindtap="goProLists" data-shopcatid="{{item.shopcatid}}" wx:for-index="index" wx:key="key">
+                {{item.shopcatitle}}
+            </view>
+        </view>
+    </view>
+</view>

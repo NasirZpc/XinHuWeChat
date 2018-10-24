@@ -43,4 +43,10 @@ Page({
             }
         });
     },
+    //跳转到商品分类列表
+    goProLists(e){
+        wx.navigateTo({
+           url: "../proLists/proLists?shopid="+this.data.shopid+"&shopcatid="+e.currentTarget.dataset.shopcatid
+        });
+    }
 })

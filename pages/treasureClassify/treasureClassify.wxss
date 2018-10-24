@@ -1,0 +1,7 @@
+.TCItem .i-right{
+    top:2rpx;
+}
+.childItem{
+    background:#f4f4f4;
+    width:50%;
+}
