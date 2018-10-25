@@ -1,1 +1,20 @@
-
+.firstClassLists{
+    display: flex;
+    white-space: nowrap;
+    height:64rpx;
+}
+.firstClassItem{
+    height:60rpx;
+    padding:0 20rpx;
+    margin:0 10rpx;
+    line-height: 62rpx;
+    border-bottom:4rpx solid #fff;
+}
+.firstClassItem.active{
+    border-color:#ff5c00;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

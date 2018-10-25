@@ -209,14 +209,14 @@ Page({
     goFastEnter(e){
         if(e.currentTarget.dataset.id == 10){
             wx.navigateTo({
-               url: "../proClassLists/proClassLists"
+               url: "../proClassLists/proClassLists?type="+e.currentTarget.dataset.id
             });
         }
     },
     //跳转到商品分类列表页
     goProClassLists(e){
         wx.navigateTo({
-           url: "../proClassLists/proClassLists"
+           url: "../proClassLists/proClassLists?type="+e.currentTarget.dataset.id
         });
     },
 })
