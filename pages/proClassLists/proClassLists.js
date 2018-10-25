@@ -4,26 +4,34 @@ Page({
     data:{
         type:'',//分类
         state:'-1',
-        firstClassLists : []
+        scrollLeft:'',
+        firstClassLists : [],
     },
     onLoad(option) {
         this.setData({
             type:option.type
         })
-        var _state;
+        var _state,
+            _scrollLeft;
         if(this.data.type == 10){
             _state = '-1'
+            _scrollLeft = '0'
         }else if(this.data.type == 1){
             _state = '8'
+            _scrollLeft = '800'
         }else if(this.data.type == 2){
             _state = '4'
+            _scrollLeft = '800'
         }else if(this.data.type == 3){
             _state = '7'
+            _scrollLeft = '800'
         }else if(this.data.type == 4){
             _state = '9'
+            _scrollLeft = '800'
         }
         this.setData({
-            state:_state
+            state:_state,
+            scrollLeft:_scrollLeft
         })
         this.firstClassFunc()
     },
