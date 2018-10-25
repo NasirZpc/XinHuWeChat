@@ -5,5 +5,7 @@
 </scroll-view>
 <view style="padding-top:65rpx;">
     <!-- 二级分类 -->
-    <view class=""></view>
+    <view class="secondClassLists">
+        
+    </view>
 </view>
