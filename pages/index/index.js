@@ -209,7 +209,7 @@ Page({
     goFastEnter(e){
         if(e.currentTarget.dataset.id == 10){
             wx.navigateTo({
-               url: "../proClassLists/proClassLists?activityid="+e.currentTarget.dataset.activityid+"&type="+e.currentTarget.dataset.type
+               url: "../proClassLists/proClassLists"
             });
         }
     },
