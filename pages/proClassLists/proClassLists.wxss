@@ -1,7 +1,8 @@
 .firstClassLists{
     display: flex;
-    white-space: nowrap;
+    width:100%;
     height:64rpx;
+    white-space: nowrap;
 }
 .firstClassItem{
     height:60rpx;
@@ -17,4 +18,18 @@
   width: 0;
   height: 0;
   color: transparent;
+}
+
+.navigatorSecond{
+    width:25%;
+}
+.navigatorSecond image{
+    width:74.4%;
+    height:140rpx;
+}
+.navigatorSecond>view{
+    width:100%;
+}
+.secondClassLists{
+    height:425rpx;
 }

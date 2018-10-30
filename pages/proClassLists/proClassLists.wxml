@@ -1,11 +1,18 @@
 <!-- 一级分类 -->
-<scroll-view scroll-x="true" class="firstClassLists clearfix C3 fs26 bgF mb1 fix" scroll-left="{{scrollLeft}}" scroll-with-animation="true">
-    <view class="firstClassItem inlineB {{state==-1 ? 'active' : ''}}" bindtap="clickFirstClass" data-index='' data-id="">全部</view>
+<scroll-view scroll-x="true" class="firstClassLists clearfix C3 fs26 bgF fix" scroll-left="{{scrollLeft}}" scroll-with-animation="true" style="border-bottom:1rpx solid #f4f4f4;">
+    <view class="firstClassItem inlineB {{state==-1 ? 'active' : ''}}" bindtap="clickFirstClass" data-index='-1' data-id="0">全部</view>
     <view class="firstClassItem inlineB {{state==index ? 'active' : ''}}" bindtap="clickFirstClass" wx:for="{{firstClassLists}}" data-index='{{index}}' wx:for-index="index" wx:key="key" data-id="{{item.id}}">{{item.catname}}</view>
 </scroll-view>
 <view style="padding-top:65rpx;">
     <!-- 二级分类 -->
-    <view class="secondClassLists">
-        
-    </view>
+    <swiper class="secondClassLists" current="{{current}}">
+        <swiper-item wx:for="{{secondClassLists}}" wx:for-index="index" wx:key="key">
+            <view class="clearfix bgF pt20">
+                <view class="navigatorSecond inlineB tc" wx:for="{{item}}"  wx:for-index="index" wx:key="key" wx:for-item="childItem" bindtap="getProductList" data-id="{{childItem.id}}">
+                    <image src="{{childItem.catpic}}"></image>
+                    <view class="tc C3 fs26">{{childItem.catname}}</view>
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
 </view>
