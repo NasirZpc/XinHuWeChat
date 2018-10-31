@@ -150,7 +150,7 @@ Page({
             title: '玩命加载中',
         })
         this.setData({
-            type:e.target.dataset.id,
+            type:e.currentTarget.dataset.id,
             proLists : [],
         })
         this.proListsFunc()
@@ -246,12 +246,12 @@ Page({
                             noMore:false
                         })
                     }
-                    var _shopProLists = this.data.shopProLists;
-                    for (var i = 0; i < res.data.data.length; i++) {
-                        _shopProLists.push(res.data.data[i]);
+                    var _proLists = this.data.proLists;
+                    for (var i = 0; i < res.data.data.prolist.length; i++) {
+                        _proLists.push(res.data.data.prolist[i]);
                     }
                     this.setData({
-                        shopProLists: _shopProLists
+                        proLists: _proLists
                     })
                     // 隐藏加载框
                     setTimeout(()=>{
