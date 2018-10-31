@@ -126,7 +126,6 @@ Page({
     onReachBottomFunc() {
         if(this.data.isActive == 1){
             if(!this.data.noMore){
-                var that = this;
                 // 显示加载图标
                 wx.showLoading({
                     title: '玩命加载中',
@@ -208,7 +207,7 @@ Page({
     //跳转到商品搜索页
     goProSearch(e){
         wx.navigateTo({
-           url: "../proSearch/proSearch?shopid="+e.currentTarget.dataset.id +"&shopcatid="+e.currentTarget.dataset.shopcatid 
+           url: "../proSearch/proSearch?shopid="+e.currentTarget.dataset.id +"&shopcatid="+e.currentTarget.dataset.shopcatid
         });
     },
 })

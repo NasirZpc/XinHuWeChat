@@ -10,21 +10,31 @@ Page({
         secondClassLists: [],
         firstClassId: '0',
         current:0,
+        //排序
+        sort : '',
+        curActive : 0,
+        page:1,
+        proLists:[],
+        noMore:false,
     },
     onLoad(option) {
-        this.setData({
-            type: option.type
-        })
+        if(option.type ==10){
+            this.setData({
+                type: ''
+            })
+        }else{
+            this.setData({
+                type: option.type
+            })
+        }
+
         this.firstClassFunc()
         this.allClassFunc()
-
+        this.proListsFunc()
     },
 
     //一级分类
     firstClassFunc() {
-        wx.showLoading({
-            title: '玩命加载中',
-        })
         wx.request({
             url: app.baseUrl + '/index.php/Product/getprocat',
             method: "GET",
@@ -35,7 +45,7 @@ Page({
                     })
                     var _state,
                         _scrollLeft;
-                    if (this.data.type == 10) {
+                    if (this.data.type == '') {
                         _state = '-1'
                         _scrollLeft = '0'
                     } else if (this.data.type == 1) {
@@ -63,9 +73,6 @@ Page({
                         mask: true
                     })
                 }
-                setTimeout(()=>{
-                    wx.hideLoading()
-                },500)
             }
         });
     },
@@ -113,7 +120,9 @@ Page({
         this.setData({
             state: e.target.dataset.index,
             firstClassId: e.target.dataset.id,
-            current:0
+            current:0,
+            type:e.target.dataset.id,
+            proLists : [],
         })
         var _secondClassLists = [];
         for (var i = 0; i < this.data.allClassLists.length; i++) {
@@ -130,6 +139,21 @@ Page({
         this.setData({
             secondClassLists: this.returnAttr(_secondClassLists)
         })
+        this.proListsFunc()
+        setTimeout(()=>{
+            wx.hideLoading()
+        },500)
+    },
+    //点击二级分类
+    clickSecondClass(e){
+        wx.showLoading({
+            title: '玩命加载中',
+        })
+        this.setData({
+            type:e.target.dataset.id,
+            proLists : [],
+        })
+        this.proListsFunc()
         setTimeout(()=>{
             wx.hideLoading()
         },500)
@@ -150,10 +174,119 @@ Page({
         }
         return dataArr
     },
+    //点击筛选
+    sortFunc(e){
+        this.setData({
+            curActive : e.currentTarget.dataset.type,
+            page : 1,
+            proLists : [],
+        })
+        if(this.data.curActive == 0){
+            this.setData({
+                sort : '',
+            })
+        }else if(this.data.curActive == 1){
+            if(this.data.sort == 1){
+                this.setData({
+                    sort : 2,
+                })
+            }else{
+                this.setData({
+                    sort : 1,
+                })
+            }
+        }else if(this.data.curActive == 2){
+            if(this.data.sort == 3){
+                this.setData({
+                    sort : 4,
+                })
+            }else{
+                this.setData({
+                    sort : 3,
+                })
+            }
+        }else if(this.data.curActive == 3){
+            if(this.data.sort == 5){
+                this.setData({
+                    sort : 6,
+                })
+            }else{
+                this.setData({
+                    sort : 5,
+                })
+            }
+        }
+        this.proListsFunc()
+    },
+    //商品列表
+    proListsFunc(){
+        wx.showLoading({
+            title: '玩命加载中',
+        })
+        wx.request({
+            url: app.baseUrl + 'index.php/Api/Product/getlist',
+            method: "POST",
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            data: {
+                cid:this.data.type,
+                sort:this.data.sort,
+                pagesize: 6,
+                p: this.data.page,
+            },
+            success: (res) => {
+                if (res.data.status == 1) {
+                    if(res.data.data.length<6){
+                        this.setData({
+                            noMore:true
+                        })
+                    }else{
+                        this.setData({
+                            noMore:false
+                        })
+                    }
+                    var _shopProLists = this.data.shopProLists;
+                    for (var i = 0; i < res.data.data.length; i++) {
+                        _shopProLists.push(res.data.data[i]);
+                    }
+                    this.setData({
+                        shopProLists: _shopProLists
+                    })
+                    // 隐藏加载框
+                    setTimeout(()=>{
+                        wx.hideLoading()
+                    },500)
+
+                } else {
+                    wx.showToast({
+                        title: res.data.msg,
+                        duration: 2500,
+                        icon: 'none',
+                        mask: true
+                    })
+                }
+            }
+        });
+    },
+    //上拉加载
+    onReachBottom() {
+        if(!this.data.noMore){
+            // 显示加载图标
+            wx.showLoading({
+                title: '玩命加载中',
+            })
+            // 页数+1
+            this.data.page = this.data.page + 1;
+            setTimeout(()=>{
+                this.proListsFunc()
+            },500)
+        }
+    },
     //商品详情页
-    goProLists(e) {
-        wx.redirectTo({
-            url: "../proLists/proLists?txt=" + e.currentTarget.dataset.txt + "&shopid=" + this.data.shopid + "&shopcatid=" + this.data.shopcatid
+    goProDetail(e){
+        wx.navigateTo({
+           url: "../proDetail/proDetail?proid="+e.currentTarget.dataset.id + '&isactivity=0'
         });
     },
 })

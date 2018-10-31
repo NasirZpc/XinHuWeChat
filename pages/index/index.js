@@ -206,6 +206,7 @@ Page({
            url: "../storeDetail/storeDetail?shopid="+e.currentTarget.dataset.id
         });
     },
+    //跳转到商品分类列表页
     goFastEnter(e){
         if(e.currentTarget.dataset.id == 10){
             wx.navigateTo({
@@ -213,7 +214,6 @@ Page({
             });
         }
     },
-    //跳转到商品分类列表页
     goProClassLists(e){
         wx.navigateTo({
            url: "../proClassLists/proClassLists?type="+e.currentTarget.dataset.id

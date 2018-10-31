@@ -1,6 +1,6 @@
 <!-- 一级分类 -->
 <scroll-view scroll-x="true" class="firstClassLists clearfix C3 fs26 bgF fix" scroll-left="{{scrollLeft}}" scroll-with-animation="true" style="border-bottom:1rpx solid #f4f4f4;">
-    <view class="firstClassItem inlineB {{state==-1 ? 'active' : ''}}" bindtap="clickFirstClass" data-index='-1' data-id="0">全部</view>
+    <view class="firstClassItem inlineB {{state==-1 ? 'active' : ''}}" bindtap="clickFirstClass" data-index='-1' data-id="">全部</view>
     <view class="firstClassItem inlineB {{state==index ? 'active' : ''}}" bindtap="clickFirstClass" wx:for="{{firstClassLists}}" data-index='{{index}}' wx:for-index="index" wx:key="key" data-id="{{item.id}}">{{item.catname}}</view>
 </scroll-view>
 <view style="padding-top:65rpx;">
@@ -8,11 +8,44 @@
     <swiper class="secondClassLists" current="{{current}}">
         <swiper-item wx:for="{{secondClassLists}}" wx:for-index="index" wx:key="key">
             <view class="clearfix bgF pt20">
-                <view class="navigatorSecond inlineB tc" wx:for="{{item}}"  wx:for-index="index" wx:key="key" wx:for-item="childItem" bindtap="getProductList" data-id="{{childItem.id}}">
+                <view class="navigatorSecond inlineB tc" wx:for="{{item}}"  wx:for-index="index" wx:key="key" wx:for-item="childItem" bindtap="clickSecondClass" data-id="{{childItem.id}}">
                     <image src="{{childItem.catpic}}"></image>
                     <view class="tc C3 fs26">{{childItem.catname}}</view>
                 </view>
             </view>
         </swiper-item>
     </swiper>
+    <!-- 排序 -->
+    <view class="sortWrap clearfix C6 fs28 tc bgF">
+        <view class="fl rel {{curActive == 0?'curActive' : ''}}" data-type="0" bindtap="sortFunc">
+            综合排序
+        </view>
+        <view class="fl rel {{curActive == 1?'curActive' : ''}}" data-type="1" bindtap="sortFunc">
+            销量
+            <view class="icon i-sort rel inlineB {{ sort == 1? 'i-sortup' :  sort == 2?'i-sortdown':''}}"></view>
+        </view>
+        <view class="fl rel {{curActive == 2?'curActive' : ''}}" data-type="2" bindtap="sortFunc">
+            评价
+            <view class="icon i-sort rel inlineB {{ sort == 3? 'i-sortup' :  sort == 4?'i-sortdown':''}}"></view>
+        </view>
+        <view class="fl rel {{curActive == 3?'curActive' : ''}}" data-type="3" bindtap="sortFunc">
+            价格
+            <view class="icon i-sort rel inlineB {{ sort == 5? 'i-sortup' :  sort == 6?'i-sortdown':''}}"></view>
+        </view>
+    </view>
+    <view class="evboybuyLists comProLists clearfix mb10">
+        <view wx:for="{{proLists}}" wx:for-index="index" wx:key="key" bindtap="goProDetail" data-id="{{item.id}}" class="comProItem fl bgF mt10">
+            <view class="comProImageWrap">
+                <image class="" src="{{item.pic}}" lazy-load="true"/>
+            </view>
+            <view class="comProContWrap p15">
+                <view class="fs26 C0 pb10">{{dataFilter.getText(item.productname,25)}}</view>
+                <view class="tr fs C9 fs24 pb10">{{item.placedelivery}}</view>
+                <view class="clearfix">
+                    <view class="fl orange fs30">¥{{item.currentprice}}</view>
+                    <view class="fr C6 fs24">{{item.sale}}件已售</view>
+                </view>
+            </view>
+        </view>
+    </view>
 </view>
