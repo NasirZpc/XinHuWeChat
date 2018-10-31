@@ -13,5 +13,5 @@ App({
         return re.test(str);
     },
     //baseUrl
-    baseUrl:"https://api.xinhushangcheng.com/"
+    baseUrl:"https://testapi.xinhushangcheng.com/"
 })
