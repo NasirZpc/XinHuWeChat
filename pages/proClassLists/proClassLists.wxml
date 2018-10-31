@@ -1,3 +1,4 @@
+<wxs module="dataFilter" src="../../filter/dataFilter.wxs"></wxs>
 <!-- 一级分类 -->
 <scroll-view scroll-x="true" class="firstClassLists clearfix C3 fs26 bgF fix" scroll-left="{{scrollLeft}}" scroll-with-animation="true" style="border-bottom:1rpx solid #f4f4f4;">
     <view class="firstClassItem inlineB {{state==-1 ? 'active' : ''}}" bindtap="clickFirstClass" data-index='-1' data-id="">全部</view>
