@@ -272,11 +272,9 @@ Page({
     //上拉加载
     onReachBottom() {
         if(!this.data.noMore){
-            // 显示加载图标
             wx.showLoading({
                 title: '玩命加载中',
             })
-            // 页数+1
             this.data.page = this.data.page + 1;
             setTimeout(()=>{
                 this.proListsFunc()
