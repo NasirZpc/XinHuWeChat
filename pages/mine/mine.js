@@ -19,17 +19,18 @@ Page({
             }
         }
     },
-    onGotUserInfo: function(e) {
+    onGotUserInfo(e) {
         console.log(app.globalData.userInfo)
         if(e.detail.errMsg != "getUserInfo:ok"){
             //取消授权
         }else{
             //确认授权
-            app.userLogin(e)
             this.setData({
-                isLogin : true,
-                userInfo:app.globalData.userInfo
+                isLogin : 2,
+                userInfo:e.detail.userInfo
             })
+            this.onLoad()
+            app.userLogin(e)
         }
     },
 })

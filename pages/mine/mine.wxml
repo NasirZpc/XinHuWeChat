@@ -5,6 +5,9 @@
     </view>
     <view wx:if="{{isLogin == 2}}" class="isLogin2 abs clearfix">
         <image  class="mr20 fl" src="{{userInfo.avatarUrl}}" />
-        <button class="Cf fs28 fl" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">点击绑定手机号</button>
+        <view class="fl">
+            <view class="fs28 Cf ml20">{{userInfo.nickName}}</view>
+            <button class="Cf fs28" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">点击绑定手机号</button>
+        </view>
     </view>
 </view>

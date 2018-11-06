@@ -36,7 +36,7 @@ App({
         wx.login({
             success(res) {
                 if (res.code) {
-                    //发起网络请求
+                    //发起网络请求获取openid和session_key
                     wx.request({
                         url: that.baseUrl + '/index.php/Api/User/sp_wx_useid',
                         data: {
@@ -47,7 +47,7 @@ App({
                             //     "session_key",
                             //     res.data.session_key
                             // )
-                            var _res = res.data.session_key
+                            var _session_key = res.data.session_key
                             //第三方登录
                             wx.request({
                                 url: that.baseUrl + '/index.php/Api/User/oauthuser',
@@ -65,7 +65,7 @@ App({
                                 success: (res) => {
                                     if (res.data.status == 1) {
                                         wx.navigateTo({ //绑定手机号
-                                            url: "../bindPhone/bindPhone?session_key="+_res
+                                            url: "../bindPhone/bindPhone?session_key="+_session_key
                                         });
                                     }
                                 }

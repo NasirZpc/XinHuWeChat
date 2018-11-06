@@ -15,7 +15,16 @@
     height:130rpx;
     border-radius:50%;
 }
-.isLogin1 button,.isLogin2 button{
+.isLogin1 button{
+    width:250rpx;
+    height:70rpx;
+    background: none;
+    border:none!important;
+    display: inline-block;
+    line-height:70rpx;
+    margin-top:33rpx;
+}
+.isLogin2 button{
     width:250rpx;
     height:70rpx;
     background: none;
