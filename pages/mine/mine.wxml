@@ -1,1 +1,3 @@
-<view></view>
+<view class="personalBg">
+    <button wx:if="{{!isLogin}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">授权登录</button>
+</view>

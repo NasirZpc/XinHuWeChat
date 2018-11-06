@@ -16,7 +16,8 @@
         "pages/treasureClassify/treasureClassify",
         "pages/proLists/proLists",
         "pages/proSearch/proSearch",
-        "pages/proClassLists/proClassLists"
+        "pages/proClassLists/proClassLists",
+        "pages/bindPhone/bindPhone"
     ],
     "window": {
         "navigationBarTitleText": "信户商城",

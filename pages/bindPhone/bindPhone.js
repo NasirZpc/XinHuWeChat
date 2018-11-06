@@ -7,7 +7,5 @@ Page({
     onLoad(){
 
     },
-    onShow(){
-        
-    },
+    
 })
