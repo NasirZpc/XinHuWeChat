@@ -1,3 +1,10 @@
-<view class="personalBg">
-    <button wx:if="{{!isLogin}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">授权登录</button>
+<view class="personalBg rel">
+    <view wx:if="{{isLogin == 1}}" class="isLogin1 abs clearfix">
+        <image class="mr20 fl" src="../../icon/index_logo.png" />
+        <button class="Cf fs28 fl" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">点击登录</button>
+    </view>
+    <view wx:if="{{isLogin == 2}}" class="isLogin2 abs clearfix">
+        <image  class="mr20 fl" src="{{userInfo.avatarUrl}}" />
+        <button class="Cf fs28 fl" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">点击绑定手机号</button>
+    </view>
 </view>

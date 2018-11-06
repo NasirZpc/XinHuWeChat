@@ -5,3 +5,25 @@
     background-repeat:no-repeat;
     background-position:center;
 }
+.isLogin1,.isLogin2{
+    top:50%;
+    margin-top:-65rpx;
+    left:25px;
+}
+.isLogin1 image,.isLogin2 image{
+    width:130rpx;
+    height:130rpx;
+    border-radius:50%;
+}
+.isLogin1 button,.isLogin2 button{
+    width:250rpx;
+    height:70rpx;
+    background: none;
+    border:none!important;
+    display: inline-block;
+    line-height:70rpx;
+    margin-top:33rpx;
+}
+.isLogin1 button:after,.isLogin2 button:after{
+    border:none;
+}

@@ -47,6 +47,7 @@ App({
                             //     "session_key",
                             //     res.data.session_key
                             // )
+                            var _res = res.data.session_key
                             //第三方登录
                             wx.request({
                                 url: that.baseUrl + '/index.php/Api/User/oauthuser',
@@ -64,7 +65,7 @@ App({
                                 success: (res) => {
                                     if (res.data.status == 1) {
                                         wx.navigateTo({ //绑定手机号
-                                            url: "../bindPhone/bindPhone"
+                                            url: "../bindPhone/bindPhone?session_key="+_res
                                         });
                                     }
                                 }
