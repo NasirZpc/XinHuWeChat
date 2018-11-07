@@ -1,23 +1,16 @@
 const app = getApp()
 Page({
     data: {
-        isLogin : 1,
+        isLogin : false,
         userInfo:'',
-        
     },
     onLoad() {
         console.log(app.globalData.userInfo)
-        if(app.globalData.userInfo){
+        //点击授权，未绑定手机号
+        if(app.globalData.session_key){
             this.setData({
-                isLogin : 2,
-                userInfo:app.globalData.userInfo
+                isLogin : 3,
             })
-            //点击授权，未绑定手机号
-            if(app.globalData.session_key){
-                this.setData({
-                    isLogin : 3,
-                })
-            }
         }
     },
     onGotUserInfo(e) {

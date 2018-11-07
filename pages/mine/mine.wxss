@@ -5,38 +5,27 @@
     background-repeat:no-repeat;
     background-position:center;
 }
-.isLogin1,.isLogin2{
+.isLogin{
     top:50%;
     margin-top:-65rpx;
     left:25px;
 }
-.isLogin1 image,.isLogin2 image{
+.isLogin image{
     width:130rpx;
     height:130rpx;
     border-radius:50%;
 }
-.isLogin1 button{
-    width:250rpx;
-    height:70rpx;
-    background: none;
-    border:none!important;
-    display: inline-block;
-    line-height:70rpx;
-    margin-top:33rpx;
+.signBtn{
+    height:50rpx;
+    line-height:50rpx;
+    width:200rpx;
+    background: rgba(0,0,0,0.4);
+    border-radius:50rpx 0 0 50rpx;
+    top:50%;
+    right:0;
+    margin-top:-25rpx;
 }
-.isLogin2 button{
-    width:250rpx;
-    height:70rpx;
-    background: none;
-    border:none!important;
-    display: inline-block;
-    line-height:70rpx;
-    margin-top:33rpx;
-    margin-top:0;
-}
-.isLogin1 button:after,.isLogin2 button:after{
-    border:none;
-}
+
 /*icon*/
 .i-coupon{
     width:90rpx;
@@ -116,6 +105,14 @@
     background-size:300rpx auto;
     background-position: -243rpx -307rpx;
 }
+.i-set{
+    width:50rpx;
+    height:50rpx;
+    background-size:300rpx auto;
+    background-position: -243rpx -370rpx;
+    top:20rpx;
+    right:20rpx;
+}
 /*content*/
 .mineNav>view{
     padding:30rpx 0;
@@ -144,3 +141,4 @@
     width:20%;
     padding:15rpx 0 10rpx;
 }
+/*未授权登录*/
