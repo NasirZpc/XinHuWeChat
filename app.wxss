@@ -169,6 +169,9 @@ page{
 .mb30{
     margin-bottom:30rpx;
 }
+.mb70{
+    margin-bottom:70rpx;
+}
 .ml10{
     margin-left:10rpx;
 }

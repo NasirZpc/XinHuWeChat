@@ -1,1 +1,9 @@
-<view></view>
+<view>
+    <view class="icon i-phone"></view>
+    <input type="" placeholder="手机号" />
+</view>
+<view>
+    <view class="icon i-code"></view>
+    <input placeholder="验证码" />
+    <button plain='true'>获取验证码</button>
+</view>
