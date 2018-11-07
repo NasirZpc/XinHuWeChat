@@ -3,6 +3,7 @@ Page({
     data: {
         isLogin : 1,
         userInfo:'',
+        
     },
     onLoad() {
         console.log(app.globalData.userInfo)
@@ -29,7 +30,6 @@ Page({
                 isLogin : 2,
                 userInfo:e.detail.userInfo
             })
-            this.onLoad()
             app.userLogin(e)
         }
     },

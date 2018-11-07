@@ -5,9 +5,130 @@
     </view>
     <view wx:if="{{isLogin == 2}}" class="isLogin2 abs clearfix">
         <image  class="mr20 fl" src="{{userInfo.avatarUrl}}" />
-        <view class="fl">
-            <view class="fs28 Cf ml20">{{userInfo.nickName}}</view>
+        <view class="fl mt20">
+            <view class="fs28 Cf ml30">{{userInfo.nickName}}</view>
             <button class="Cf fs28" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">点击绑定手机号</button>
         </view>
     </view>
+</view>
+<view class="clearfix bgF mineNav mb10 tc C3 fs28">
+    <view class="fl rel">
+        <view class="fs26 mb10">0</view>
+        <view>商品收藏</view>
+    </view>
+    <view class="fl rel">
+        <view class="fs26 mb10">0</view>
+        <view>店铺收藏</view>
+    </view>
+    <view class="fl">
+        <view class="fs26 mb10">0</view>
+        <view>浏览记录</view>
+    </view>
+</view>
+<!-- 我的资产 -->
+<view class="recommendStoreTit bgF tc clearfix p15 mb1">
+    <view class="fl C3 fs26">我的资产</view>
+</view>
+<view class="clearfix mineAssets bgF mb10 C3 fs26">
+    <view class="fl clearfix pt30 pb30">
+        <view class="icon i-coupon fl"></view>
+        <view class="fl cont tc">
+            <view class="mt10">优惠券</view>
+            <view class="orange mt5">0张可用</view>
+        </view>
+    </view>
+    <view class="fr clearfix pt30 pb30">
+        <view class="icon i-reward fl"></view>
+        <view class="fl cont tc">
+            <view class="mt10">奖励金</view>
+            <view class="orange mt5">¥0</view>
+        </view>
+    </view>
+</view>
+<!-- 订单 -->
+<view class="bgF tc clearfix p15 mb1">
+    <view class="fl C3 fs26 rel" style="top:8rpx;">商品</view>
+    <navigator url="../storeLists/storeLists">
+        <view class="fr">
+            <view class="fs26 C9 inlineB rel" style="top:3rpx;">所有订单</view>
+            <view class="icon i-right rightIcon rel inlineB" style="top:1rpx;"></view>
+        </view>
+    </navigator>
+</view>
+<view class="clearfix fs26 C3 bgF tc orderNav mb10">
+    <view class="fl">
+        <view class="icon i-waitOrder inlineB"></view>
+        <view class="">待付款</view>
+    </view>
+    <view class="fl">
+        <view class="icon i-waitSend inlineB"></view>
+        <view class="">待发货</view>
+    </view>
+    <view class="fl">
+        <view class="icon i-waitCollect inlineB"></view>
+        <view class="">待收货</view>
+    </view>
+    <view class="fl">
+        <view class="icon i-waitEva inlineB"></view>
+        <view class="">待评价</view>
+    </view>
+    <view class="fl">
+        <view class="icon i-orderOther inlineB"></view>
+        <view class="">退货/退款</view>
+    </view>
+</view>
+<!-- 个人中心快速入口 -->
+<view class="bgF tc clearfix p15 mb1">
+    <navigator url="../storeLists/storeLists">
+        <view class="icon i-mineFast1 fl mr10 rel"></view>
+        <view class="fl C3 fs26 rel" style="top:8rpx;">个人信息修改</view>
+        <view class="fr">
+            <view class="icon i-right rightIcon rel inlineB" style="top:1rpx;"></view>
+        </view>
+    </navigator>
+</view>
+<view class="bgF tc clearfix p15 mb1">
+    <navigator url="../storeLists/storeLists">
+        <view class="icon i-mineFast2 fl mr10 rel"></view>
+        <view class="fl C3 fs26 rel" style="top:8rpx;">系统消息</view>
+        <view class="fr">
+            <view class="icon i-right rightIcon rel inlineB" style="top:1rpx;"></view>
+        </view>
+    </navigator>
+</view>
+<view class="bgF tc clearfix p15 mb1">
+    <navigator url="../storeLists/storeLists">
+        <view class="icon i-mineFast3 fl mr10 rel"></view>
+        <view class="fl C3 fs26 rel" style="top:8rpx;">客服消息</view>
+        <view class="fr">
+            <view class="icon i-right rightIcon rel inlineB" style="top:1rpx;"></view>
+        </view>
+    </navigator>
+</view>
+<view class="bgF tc clearfix p15 mb1">
+    <navigator url="../storeLists/storeLists">
+        <view class="icon i-mineFast4 fl mr10 rel"></view>
+        <view class="fl C3 fs26 rel" style="top:8rpx;">收货地址管理</view>
+        <view class="fr">
+            <view class="icon i-right rightIcon rel inlineB" style="top:1rpx;"></view>
+        </view>
+    </navigator>
+</view>
+<view class="bgF tc clearfix p15 mb1">
+    <navigator url="../storeLists/storeLists">
+        <view class="icon i-mineFast5 fl mr10 rel"></view>
+        <view class="fl C3 fs26 rel" style="top:8rpx;">我要开店</view>
+        <view class="fr">
+            <view class="icon i-right rightIcon rel inlineB" style="top:1rpx;"></view>
+        </view>
+    </navigator>
+</view>
+<view class="bgF tc clearfix p15 mb1">
+    <navigator url="../storeLists/storeLists">
+        <view class="icon i-mineFast6 fl mr10 rel"></view>
+        <view class="fl C3 fs26 rel" style="top:8rpx;">联系平台</view>
+        <view class="fr">
+            <view class="icon i-right rightIcon rel inlineB" style="top:1rpx;"></view>
+        </view>
+    </navigator>
 </view>

@@ -32,7 +32,115 @@
     display: inline-block;
     line-height:70rpx;
     margin-top:33rpx;
+    margin-top:0;
 }
 .isLogin1 button:after,.isLogin2 button:after{
     border:none;
+}
+/*icon*/
+.i-coupon{
+    width:90rpx;
+    height:90rpx;
+    background-size:340rpx auto;
+    background-position: -2rpx -323rpx;
+}
+.i-reward{
+    width:90rpx;
+    height:90rpx;
+    background-size:340rpx auto;
+    background-position: -2rpx -432rpx;
+}
+.i-waitOrder{
+    width:60rpx;
+    height:60rpx;
+    background-size:340rpx auto;
+    background-position: -113rpx -276rpx;
+}
+.i-waitSend{
+    width:60rpx;
+    height:60rpx;
+    background-size:340rpx auto;
+    background-position: -189rpx -276rpx;
+}
+.i-waitCollect{
+    width:70rpx;
+    height:60rpx;
+    background-size:340rpx auto;
+    background-position: -269rpx -276rpx;
+}
+.i-waitEva{
+    width:60rpx;
+    height:60rpx;
+    background-size:340rpx auto;
+    background-position: -113rpx -348rpx;
+}
+.i-orderOther{
+    width:60rpx;
+    height:60rpx;
+    background-size:340rpx auto;
+    background-position: -189rpx -348rpx;
+}
+.i-mineFast1{
+    width:50rpx;
+    height:50rpx;
+    background-size:300rpx auto;
+    background-position: -243rpx -307rpx;
+}
+.i-mineFast2{
+    width:50rpx;
+    height:50rpx;
+    background-size:300rpx auto;
+    background-position: -104rpx -370rpx;
+}
+.i-mineFast3{
+    width:50rpx;
+    height:50rpx;
+    background-size:300rpx auto;
+    background-position: -243rpx -307rpx;
+}
+.i-mineFast4{
+    width:50rpx;
+    height:50rpx;
+    background-size:300rpx auto;
+    background-position: -170rpx -370rpx;
+}
+.i-mineFast5{
+    width:50rpx;
+    height:50rpx;
+    background-size:300rpx auto;
+    background-position: -243rpx -307rpx;
+}
+.i-mineFast6{
+    width:50rpx;
+    height:50rpx;
+    background-size:300rpx auto;
+    background-position: -243rpx -307rpx;
+}
+/*content*/
+.mineNav>view{
+    padding:30rpx 0;
+    width:33.33%;
+}
+.mineNav>view.rel:after{
+    content:"";
+    display: block;
+    height:70%;
+    width:1px;
+    background:#f4f4f4;
+    position: absolute;
+    right:0;
+    top:15%;
+}
+.mineAssets>view{
+    width:50%;
+}
+.mineAssets .icon{
+    margin-left:55rpx;
+}
+.mineAssets .cont{
+    width:180rpx;
+}
+.orderNav>view{
+    width:20%;
+    padding:15rpx 0 10rpx;
 }
