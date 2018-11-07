@@ -146,6 +146,6 @@
         <open-data type="userAvatarUrl"></open-data>
     </view>
     <view class="tip C0 fs26 pt20">该小程序由信户商城开发，请提供以下授权，即可继续操作</view>
-    <view class="mb70 mt20 C6 fs22">·获取你的公开信息（昵称、头像等）</view>
+    <view class="mb70 mt20 C6 fs24">·获取你的公开信息（昵称、头像等）</view>
     <button class="Cf fs30 bgO loginBtn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">授权登录</button>
 </view>

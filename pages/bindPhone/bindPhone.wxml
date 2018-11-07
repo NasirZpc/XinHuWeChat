@@ -1,9 +1,12 @@
-<view>
-    <view class="icon i-phone"></view>
-    <input type="" placeholder="手机号" />
+<view class="p20">
+    <view class="itemIpt bgF mt10 clearfix rel">
+        <view class="icon i-phone fl rel" style="top:15rpx;"></view>
+        <input class="fl block fs26 C3 rel" bindinput="inputPhoneFunc" type="number" placeholder="手机号" />
+    </view>
+    <view class="itemIpt bgF mt30 rel">
+        <view class="icon i-code fl rel" style="top:15rpx;"></view>
+        <input class="fl block fs26 C3 rel" bindinput="inputCodeFunc" type="number" placeholder="验证码" style="width:380rpx;"/>
+        <view class="fr btn Cf fs26 bgO tc" plain="true" bindtap="getCode">获取验证码</view>
+    </view>
 </view>
-<view>
-    <view class="icon i-code"></view>
-    <input placeholder="验证码" />
-    <button plain='true'>获取验证码</button>
-</view>
+<view class="bindBtn bgO fs28 Cf tc fix" bindtap="bindFunc">绑定</view>

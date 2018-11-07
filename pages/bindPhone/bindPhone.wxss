@@ -1,1 +1,44 @@
-
+.itemIpt{
+    width:94%;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:10rpx;
+    border:1px solid #ddd;
+    height:80rpx;
+    overflow: hidden;
+}
+.itemIpt .btn{
+    height:80rpx;
+    line-height: 80rpx;
+    width:180rpx;
+}
+.i-phone{
+    width:50rpx;
+    height:50rpx;
+    background-size:300rpx auto;
+    background-position: -104rpx -430rpx;
+}
+.i-code{
+    width:50rpx;
+    height:50rpx;
+    background-size:300rpx auto;
+    background-position: -143rpx -430rpx;
+}
+.itemIpt .icon{
+    margin:0 15rpx;
+}
+.itemIpt input{
+    width:567rpx;
+    height:50rpx;
+    top:15rpx;
+    padding-left:20rpx;
+    border-left:1rpx solid #f4f4f4;
+}
+.bindBtn{
+    width:90%;
+    height:80rpx;
+    border-radius: 80rpx;
+    line-height:80rpx;
+    bottom:100rpx;
+    left:5%;
+}
