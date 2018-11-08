@@ -64,10 +64,7 @@ Page({
             })
             return false
         }
-        this.getCode();
-        this.setData({
-            disabled:true
-        })
+
         //获取验证码
         wx.request({
             url: app.baseUrl + '/index.php/Api/Sms/sendmsg',
@@ -81,9 +78,13 @@ Page({
             },
             success: (res) => {
                 if (res.data.status == 1) {
+                    this.getCode();
+                    this.setData({
+                        disabled:true
+                    })
                     this.setData({
                         isShow: true,
-                        accesstoken : res.data.accesstoken
+                        accesstoken : res.data.data.accesstoken
                     })
                 } else {
                     wx.showToast({
@@ -103,9 +104,9 @@ Page({
         })
     },
     //输入密码
-    inputPasswordFunce(e){
+    inputPasswordFunc(e){
         this.setData({
-            code: e.detail.value
+            password: e.detail.value
         })
     },
     //输入邀请码
