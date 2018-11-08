@@ -11,6 +11,13 @@
     height:80rpx;
     line-height: 80rpx;
     width:180rpx;
+    background:#ff5c00;
+    border-radius:0;
+    color:#fff;
+    border:none;
+}
+.itemIpt .btn:after{
+    border:none;
 }
 .i-phone{
     width:50rpx;
@@ -19,6 +26,12 @@
     background-position: -104rpx -430rpx;
 }
 .i-code{
+    width:50rpx;
+    height:50rpx;
+    background-size:300rpx auto;
+    background-position: -185rpx -430rpx;
+}
+.i-password{
     width:50rpx;
     height:50rpx;
     background-size:300rpx auto;
