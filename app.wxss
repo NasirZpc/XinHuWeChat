@@ -477,3 +477,16 @@ page{
     top:8rpx;
     margin-left:5rpx;
 }
+/*未授权登录*/
+.noLogin{
+    width:80%;
+    margin:80rpx auto;
+}
+.tip{
+    border-top:1rpx solid #ddd;
+}
+.userAvatarUrl{
+    margin:0 auto 30rpx;
+    width:30%;
+    border-radius:50%;
+}

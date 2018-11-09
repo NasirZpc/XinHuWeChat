@@ -171,6 +171,9 @@ Page({
                 success: (res) => {
                     if (res.data.status == 1) {
                         console.log(res)
+                        wx.navigateTo({ //跳转到首页
+                            url: "../index/index"
+                        });
                     } else {
                         wx.showToast({
                             title: res.data.msg,
