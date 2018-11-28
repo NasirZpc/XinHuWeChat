@@ -20,7 +20,10 @@
         "pages/login/login",
         "pages/bindPhone/bindPhone",
         "pages/myCollectPro/myCollectPro",
-        "pages/myOrder/myOrder"
+        "pages/myOrder/myOrder",
+        "pages/myInfoEdit/myInfoEdit",
+        "pages/systemMsg/systemMsg",
+        "pages/systemMsgDetail/systemMsgDetail"
     ],
     "window": {
         "navigationBarTitleText": "信户商城",

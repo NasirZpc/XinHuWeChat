@@ -82,7 +82,7 @@
     </view>
     <!-- 个人中心快速入口 -->
     <view class="bgF tc clearfix p15 mb1">
-        <navigator url="../storeLists/storeLists" class="clearfix">
+        <navigator url="../myInfoEdit/myInfoEdit" class="clearfix">
             <view class="icon i-mineFast1 fl mr10 rel"></view>
             <view class="fl C3 fs26 rel" style="top:8rpx;">个人信息修改</view>
             <view class="fr">
@@ -91,7 +91,7 @@
         </navigator>
     </view>
     <view class="bgF tc clearfix p15 mb1">
-        <navigator url="../storeLists/storeLists" class="clearfix">
+        <navigator url="../systemMsg/systemMsg" class="clearfix">
             <view class="icon i-mineFast2 fl mr10 rel"></view>
             <view class="fl C3 fs26 rel" style="top:8rpx;">系统消息</view>
             <view class="fr">

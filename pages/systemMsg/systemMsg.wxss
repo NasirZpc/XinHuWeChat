@@ -1,0 +1,14 @@
+.isRead{
+    width:15rpx;
+    height:15rpx;
+    border-radius: 50%;
+    top:2rpx;
+    left:30rpx;
+    background:#ff5c00;
+}
+.ignoreMsg{
+    width:100%;
+    top:0;
+    left:0;
+    z-index: 2;
+}

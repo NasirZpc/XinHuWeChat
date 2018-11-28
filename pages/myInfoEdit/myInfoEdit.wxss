@@ -1,0 +1,23 @@
+.myInfoEdit>view{
+    height: 50rpx;
+    line-height: 50rpx;
+}
+.myInfoEdit>view .i-right{
+    top:12rpx;
+}
+.headerImg{
+    width:50rpx;
+    height:50rpx;
+    border-radius: 50%;
+}
+.myInfoEdit input{
+    width:200rpx;
+    height:100%;
+}
+.saveBtn{
+    width:90%;
+    height:80rpx;
+    border-radius: 80rpx;
+    left:5%;
+    bottom:50rpx;
+}

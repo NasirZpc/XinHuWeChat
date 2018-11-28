@@ -1,0 +1,15 @@
+<view class="bgO tc Cf fs26 fix ignoreMsg" bindtap="ignoreMsg" style="height:60rpx;line-height:60rpx;">忽略未读</view>
+<view class="sysMsgLists" style="padding-top:60rpx;">
+    <view class="sysMsgItem bgF p15 mb20" wx:for="{{sysMsgLists}}" wx:for-index="index" wx:key="key" data-id="{{item.id}}" bindtap="goMsgDetail">
+        <view class="clearfix mb10 rel">
+            <view class="icon i-sysMsg fl mr10"></view>
+            <view class="isRead abs" wx:if="{{item.isread == 0}}"></view>
+            <view class="fl fs26 C0" style="margin-top:3rpx;">{{item.typename}}</view>
+        </view>
+        <view class="fs24 C3 mb10">{{item.pushmessage}}</view>
+        <view class="clearfix fs22">
+            <view class="fl C9">{{item.createtime}}</view>
+            <view class="fr C3 fs24">查看详情</view>
+        </view>
+    </view>
+</view>

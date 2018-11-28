@@ -1,0 +1,26 @@
+<view class="myInfoEdit fs28 C3">
+    <view class="clearfix p15 mb1 bgF">
+        <view class="fl">头像</view>
+        <view class="fr icon i-right rel"></view>
+        <image bindtap="updataImg" class="fr headerImg" src="{{headerImg}}"/>
+    </view>
+    <view class="clearfix p15 mb1 bgF">
+        <view class="fl">昵称</view>
+        <input class="tr fr" type="text" value="{{nickName}}" bindinput="bindIptNickName" />
+    </view>
+    <view class="clearfix p15 mb1 bgF">
+        <view class="fl">性别</view>
+        <view class="fr icon i-right rel"></view>
+        <picker class="block fr tr" style="width:200rpx;height:100%;" bindchange="bindSexChange" value="{{indexSex}}" range="{{arraySex}}">
+            <view>{{arraySex[indexSex]}}</view>
+        </picker>
+    </view>
+    <view class="clearfix p15 bgF">
+        <view class="fl">年龄</view>
+        <view class="fr icon i-right rel"></view>
+        <picker class="block fr tr" style="width:200rpx;height:100%;" bindchange="bindAgeChange" value="{{indexAge}}" range="{{arrayAge}}">
+            <view>{{arrayAge[indexAge]}}</view>
+        </picker>
+    </view>
+</view>
+<button class="bgO fix Cf fs30 saveBtn">保存</button>
