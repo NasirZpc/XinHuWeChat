@@ -19,6 +19,7 @@
         "pages/proClassLists/proClassLists",
         "pages/login/login",
         "pages/bindPhone/bindPhone",
+        "pages/myCollectPro/myCollectPro",
         "pages/myOrder/myOrder"
     ],
     "window": {

@@ -133,7 +133,7 @@ Page({
                 'content-type': 'application/x-www-form-urlencoded'
             },
             data: {
-                token: '',
+                token: app.globalData.token,
                 pagesize: 6,
                 p: this.data.page
             },

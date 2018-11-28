@@ -24,7 +24,7 @@ Page({
             },
             data: {
                 commentid: this.data.commentid,
-                token: '',
+                token: app.globalData.token,
             },
             success: (res) => {
                 if (res.data.status == 1) {

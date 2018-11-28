@@ -114,11 +114,11 @@
     right:20rpx;
 }
 /*content*/
-.mineNav>view{
+.mineNav>navigator{
     padding:30rpx 0;
     width:33.33%;
 }
-.mineNav>view.rel:after{
+.mineNav>navigator.rel:after{
     content:"";
     display: block;
     height:70%;

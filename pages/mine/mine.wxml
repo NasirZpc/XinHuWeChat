@@ -15,18 +15,18 @@
         <view class="signBtn tc abs Cf fs26">签到有好礼 ></view>
     </view>
     <view class="clearfix bgF mineNav mb10 tc C3 fs28">
-        <view class="fl rel">
+        <navigator url="../myCollectPro/myCollectPro" class="fl rel">
             <view class="fs26 mb10">0</view>
             <view>商品收藏</view>
-        </view>
-        <view class="fl rel">
+        </navigator>
+        <navigator url="../myCollectPro/myCollectPro" class="fl rel">
             <view class="fs26 mb10">0</view>
             <view>店铺收藏</view>
-        </view>
-        <view class="fl">
+        </navigator>
+        <navigator url="../myCollectPro/myCollectPro" class="fl rel">
             <view class="fs26 mb10">0</view>
             <view>浏览记录</view>
-        </view>
+        </navigator>
     </view>
     <!-- 我的资产 -->
     <view class="bgF tc clearfix p15 mb1">

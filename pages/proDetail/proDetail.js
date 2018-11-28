@@ -42,7 +42,7 @@ Page({
             },
             data: {
                 proid: this.data.proid,
-                token:'',
+                token:app.globalData.token,
                 isactivity:this.data.isactivity,
             },
             success: (res) => {
@@ -77,7 +77,7 @@ Page({
             },
             data: {
                 proid: this.data.proid,
-                token:'',
+                token:app.globalData.token,
                 pagesize:3,
             },
             success: (res) => {
@@ -112,7 +112,7 @@ Page({
                 'content-type': 'application/x-www-form-urlencoded'
             },
             data: {
-                token: '',
+                token: app.globalData.token,
                 pagesize: 6,
                 p: this.data.page
             },

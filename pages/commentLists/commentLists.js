@@ -32,7 +32,7 @@ Page({
             },
             data: {
                 proid: this.data.proid,
-                token: '',
+                token: app.globalData.token,
                 pagesize: 6,
                 p: this.data.page,
                 type:this.data.type

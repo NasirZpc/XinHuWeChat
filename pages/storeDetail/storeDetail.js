@@ -44,7 +44,7 @@ Page({
                 'content-type': 'application/x-www-form-urlencoded'
             },
             data: {
-                token:"",
+                token:app.globalData.token,
                 shopid:this.data.shopid
             },
             success: (res) => {

@@ -4,6 +4,7 @@ App({
     },
     globalData: {
         userInfo: wx.getStorageSync("userInfo") || '',
+        token: wx.getStorageSync("token") || '',
     },
     isNull: function(str) {
         var regu = "^[ ]+$";
@@ -15,24 +16,19 @@ App({
         var that = this;
         wx.setStorageSync("userInfo",e.detail.userInfo)//存储个人信息
         this.globalData.userInfo = e.detail.userInfo
-        var isLogin = wx.getStorageSync('session_key');
-        if(isLogin){
-            wx.checkSession({
-                success() {
-                    console.log("处于登录态");
-                    if(!this.globalData.userInfo){
-                        that.onLogin(e)
-                    }
-                },
-                fail() {
-                    console.log("需要重新登录");
-                    wx.removeStorageSync('userInfo')
+        wx.checkSession({
+            success() {
+                console.log("处于登录态");
+                if(!this.globalData.userInfo){
                     that.onLogin(e)
                 }
-            })
-        }else{
-            that.onLogin(e)
-        }
+            },
+            fail() {
+                console.log("需要重新登录");
+                wx.removeStorageSync('userInfo')
+                that.onLogin(e)
+            }
+        })
     },
     onLogin(e,hasUrl) {
         var that = this
@@ -71,7 +67,9 @@ App({
                                             that.globalData.userInfo = res.data.data
                                             that.globalData.userInfo.avatarUrl = res.data.data.avatar
                                             that.globalData.userInfo.nickName = res.data.data.user_nicename
+                                            that.globalData.token = res.data.data.token
                                             wx.setStorageSync('userInfo', that.globalData.userInfo)
+                                            wx.setStorageSync('token', that.globalData.userInfo.token)
                                             if(hasUrl){
                                                 wx.navigateBack({
                                                     delta: 2
