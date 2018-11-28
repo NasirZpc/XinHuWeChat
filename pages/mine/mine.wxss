@@ -137,7 +137,7 @@
 .mineAssets .cont{
     width:180rpx;
 }
-.orderNav>view{
+.orderNav>navigator{
     width:20%;
     padding:15rpx 0 10rpx;
 }

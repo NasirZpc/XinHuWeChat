@@ -1,0 +1,14 @@
+<view class="clearfix orderNav fix fs26 C3 tc bgF">
+    <view class="fl {{type == 0?'active':''}}" bindtap="tabOrder" data-type="0">全部</view>
+    <view class="fl {{type == 1?'active':''}}" bindtap="tabOrder" data-type="1">待付款</view>
+    <view class="fl {{type == 2?'active':''}}" bindtap="tabOrder" data-type="2">待发货</view>
+    <view class="fl {{type == 3?'active':''}}" bindtap="tabOrder" data-type="3">待收货</view>
+    <view class="fl {{type == 4?'active':''}}" bindtap="tabOrder" data-type="4">待评价</view>
+</view>
+<view class="orderLists">
+    <view class="clearfix itemWrap" wx:if="{{type == 0}}">0</view>
+    <view class="clearfix itemWrap" wx:if="{{type == 1}}">1</view>
+    <view class="clearfix itemWrap" wx:if="{{type == 2}}">2</view>
+    <view class="clearfix itemWrap" wx:if="{{type == 3}}">3</view>
+    <view class="clearfix itemWrap" wx:if="{{type == 4}}">4</view>
+</view>

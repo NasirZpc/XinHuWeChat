@@ -1,13 +1,9 @@
 <!-- 授权登录 -->
 <view wx:if="{{isLogin}}">
     <view class="personalBg rel">
-        <!-- <view wx:if="{{isLogin == 1}}" class="isLogin1 abs clearfix">
-            <image class="mr20 fl" src="../../icon/index_logo.png" />
-            <button class="Cf fs28 fl" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">点击登录</button>
-        </view> -->
         <view class="isLogin abs clearfix">
-            <image  class="mr20 fl" src="{{userInfo.avatarUrl}}" />
-            <view class="fl mt20 fs28 Cf">
+            <image  class="fl" src="{{userInfo.avatarUrl}}" />
+            <view class="fl mt20 fs28 Cf ml20">
                 <view class="">{{userInfo.nickName}}</view>
                 <view class="">
                     <view class="inlineB">邀请码:12345</view>
@@ -55,7 +51,7 @@
     <!-- 订单 -->
     <view class="bgF tc clearfix p15 mb1">
         <view class="fl C3 fs26 rel" style="top:8rpx;">商品</view>
-        <navigator url="../storeLists/storeLists">
+        <navigator url="../myOrder/myOrder?type=0">
             <view class="fr">
                 <view class="fs26 C9 inlineB rel" style="top:3rpx;">所有订单</view>
                 <view class="icon i-right rightIcon rel inlineB" style="top:1rpx;"></view>
@@ -63,26 +59,26 @@
         </navigator>
     </view>
     <view class="clearfix fs26 C3 bgF tc orderNav mb10">
-        <view class="fl">
+        <navigator url="../myOrder/myOrder?type=1" class="fl">
             <view class="icon i-waitOrder inlineB"></view>
             <view class="">待付款</view>
-        </view>
-        <view class="fl">
+        </navigator>
+        <navigator url="../myOrder/myOrder?type=2" class="fl">
             <view class="icon i-waitSend inlineB"></view>
             <view class="">待发货</view>
-        </view>
-        <view class="fl">
+        </navigator>
+        <navigator url="../myOrder/myOrder?type=3" class="fl">
             <view class="icon i-waitCollect inlineB"></view>
             <view class="">待收货</view>
-        </view>
-        <view class="fl">
+        </navigator>
+        <navigator url="../myOrder/myOrder?type=4" class="fl">
             <view class="icon i-waitEva inlineB"></view>
             <view class="">待评价</view>
-        </view>
-        <view class="fl">
+        </navigator>
+        <navigator url="../myOrder/myOrder?type=5" class="fl">
             <view class="icon i-orderOther inlineB"></view>
             <view class="">退货/退款</view>
-        </view>
+        </navigator>
     </view>
     <!-- 个人中心快速入口 -->
     <view class="bgF tc clearfix p15 mb1">

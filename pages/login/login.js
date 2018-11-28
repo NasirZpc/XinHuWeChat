@@ -1,17 +1,11 @@
 const app = getApp()
+
 Page({
     data: {
-        isLogin: false,
         userInfo: '',
     },
-    onLoad() {
-        //点击授权，未绑定手机号
-        if (app.globalData.userInfo) {
-            this.setData({
-                isLogin: true,
-                userInfo:app.globalData.userInfo
-            })
-        }
+    onLoad(option) {
+        
     },
     onGotUserInfo(e) {
         if (e.detail.errMsg != "getUserInfo:ok") {
@@ -23,9 +17,9 @@ Page({
                 mask: true
             })
         } else {
+            //确认授权
             this.setData({
-                isLogin: true,
-                userInfo:e.detail.userInfo
+                userInfo: e.detail.userInfo
             })
             app.userLogin(e)
         }

@@ -17,7 +17,9 @@
         "pages/proLists/proLists",
         "pages/proSearch/proSearch",
         "pages/proClassLists/proClassLists",
-        "pages/bindPhone/bindPhone"
+        "pages/login/login",
+        "pages/bindPhone/bindPhone",
+        "pages/myOrder/myOrder"
     ],
     "window": {
         "navigationBarTitleText": "信户商城",

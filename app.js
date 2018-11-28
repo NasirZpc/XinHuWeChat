@@ -4,7 +4,6 @@ App({
     },
     globalData: {
         userInfo: wx.getStorageSync("userInfo") || '',
-        session_key : wx.getStorageSync("session_key") || ''
     },
     isNull: function(str) {
         var regu = "^[ ]+$";
@@ -15,15 +14,19 @@ App({
     userLogin(e) {
         var that = this;
         wx.setStorageSync("userInfo",e.detail.userInfo)//存储个人信息
+        this.globalData.userInfo = e.detail.userInfo
         var isLogin = wx.getStorageSync('session_key');
         if(isLogin){
             wx.checkSession({
                 success() {
                     console.log("处于登录态");
+                    if(!this.globalData.userInfo){
+                        that.onLogin(e)
+                    }
                 },
                 fail() {
                     console.log("需要重新登录");
-                    wx.removeStorageSync('session_key')
+                    wx.removeStorageSync('userInfo')
                     that.onLogin(e)
                 }
             })
@@ -31,7 +34,7 @@ App({
             that.onLogin(e)
         }
     },
-    onLogin(e) {
+    onLogin(e,hasUrl) {
         var that = this
         wx.login({
             success(res) {
@@ -39,16 +42,15 @@ App({
                     //发起网络请求获取openid和session_key
                     wx.request({
                         url: that.baseUrl + '/index.php/Api/User/sp_wx_useid',
+                        header: {
+                            'content-type': 'application/x-www-form-urlencoded'
+                        },
                         data: {
                             code: res.code
                         },
                         success(res) {
-                            // wx.setStorageSync(
-                            //     "session_key",
-                            //     res.data.session_key
-                            // )
-                            var _session_key = res.data.session_key
-                            var _openid = res.data.openid
+                            // var _session_key = res.data.session_key
+                            // var _openid = res.data.openid
                             //第三方登录
                             wx.request({
                                 url: that.baseUrl + '/index.php/Api/User/oauthuser',
@@ -65,9 +67,21 @@ App({
                                 },
                                 success: (res) => {
                                     if (res.data.status == 1) {
-                                        wx.navigateTo({ //绑定手机号
-                                            url: "../bindPhone/bindPhone?session_key="+_session_key+"&openid="+_openid
-                                        });
+                                        if(res.data.data.mobile){//已绑定手机号
+                                            that.globalData.userInfo = res.data.data
+                                            that.globalData.userInfo.avatarUrl = res.data.data.avatar
+                                            that.globalData.userInfo.nickName = res.data.data.user_nicename
+                                            wx.setStorageSync('userInfo', that.globalData.userInfo)
+                                            if(hasUrl){
+                                                wx.navigateBack({
+                                                    delta: 2
+                                                })
+                                            }
+                                        }else{
+                                            wx.navigateTo({ //未绑定手机号
+                                                url: "../bindPhone/bindPhone?session_key="+_session_key+"&openid="+_openid
+                                            });
+                                        }
                                     }
                                 }
                             });

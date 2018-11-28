@@ -12,7 +12,8 @@ Page({
         accesstoken:'',
         isShow: false,
         time: '获取验证码', //倒计时
-        currentTime:60
+        currentTime:60,
+        disabled:false
     },
     onLoad(option) {
         this.setData({
