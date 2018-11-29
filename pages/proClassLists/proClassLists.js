@@ -35,82 +35,64 @@ Page({
 
     //一级分类
     firstClassFunc() {
-        wx.request({
-            url: app.baseUrl + '/index.php/Product/getprocat',
-            method: "GET",
-            success: (res) => {
-                if (res.data.status == 1) {
-                    this.setData({
-                        firstClassLists: res.data.data
-                    })
-                    var _state,
-                        _scrollLeft;
-                    if (this.data.type == '') {
-                        _state = '-1'
-                        _scrollLeft = '0'
-                    } else if (this.data.type == 1) {
-                        _state = '8'
-                        _scrollLeft = '1000'
-                    } else if (this.data.type == 2) {
-                        _state = '4'
-                        _scrollLeft = '120'
-                    } else if (this.data.type == 3) {
-                        _state = '7'
-                        _scrollLeft = '800'
-                    } else if (this.data.type == 4) {
-                        _state = '9'
-                        _scrollLeft = '1000'
-                    }
-                    this.setData({
-                        state: _state,
-                        scrollLeft: _scrollLeft
-                    })
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
+        app.wxRequest({
+            method:'GET',
+            url:'/index.php/Product/getprocat',
+        },res =>{
+            this.setData({
+                firstClassLists: res.data.data
+            })
+            var _state,
+                _scrollLeft;
+            if (this.data.type == '') {
+                _state = '-1'
+                _scrollLeft = '0'
+            } else if (this.data.type == 1) {
+                _state = '8'
+                _scrollLeft = '1000'
+            } else if (this.data.type == 2) {
+                _state = '4'
+                _scrollLeft = '120'
+            } else if (this.data.type == 3) {
+                _state = '7'
+                _scrollLeft = '800'
+            } else if (this.data.type == 4) {
+                _state = '9'
+                _scrollLeft = '1000'
             }
+            this.setData({
+                state: _state,
+                scrollLeft: _scrollLeft
+            })
         });
+
     },
     //一二级分类
     allClassFunc() {
-        wx.request({
-            url: app.baseUrl + '/index.php/Api/Product/assort',
-            method: "GET",
-            success: (res) => {
-                if (res.data.status == 1) {
-                    this.setData({
-                        allClassLists: res.data.data
-                    })
-                    var _secondClassLists = []
-                    if (this.data.state == -1) { //全部
-                        for (var i = 0; i < res.data.data.length; i++) {
-                            for (var j = 0; j < res.data.data[i].child.length; j++) {
-                                _secondClassLists.push(res.data.data[i].child[j])
-                            }
-                        }
-                    } else {
-                        for (var j = 0; j < res.data.data[this.data.state].child.length; j++) {
-                            _secondClassLists.push(res.data.data[this.data.state].child[j])
-                        }
+        app.wxRequest({
+            method:'GET',
+            url:'index.php/Api/Product/assort',
+        },res =>{
+            this.setData({
+                allClassLists: res.data.data
+            })
+            var _secondClassLists = []
+            if (this.data.state == -1) { //全部
+                for (var i = 0; i < res.data.data.length; i++) {
+                    for (var j = 0; j < res.data.data[i].child.length; j++) {
+                        _secondClassLists.push(res.data.data[i].child[j])
                     }
-                    this.setData({
-                        secondClassLists: this.returnAttr(_secondClassLists)
-                    })
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
+                }
+            } else {
+                for (var j = 0; j < res.data.data[this.data.state].child.length; j++) {
+                    _secondClassLists.push(res.data.data[this.data.state].child[j])
                 }
             }
+            this.setData({
+                secondClassLists: this.returnAttr(_secondClassLists)
+            })
         });
+
     },
     //点击一级分类获取二级分类
     clickFirstClass(e) {
@@ -223,50 +205,36 @@ Page({
         wx.showLoading({
             title: '玩命加载中',
         })
-        wx.request({
-            url: app.baseUrl + 'index.php/Api/Product/getlist',
-            method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            data: {
+        app.wxRequest({
+            method:'POST',
+            url:'index.php/Api/Product/getlist',
+            data:{
                 cid:this.data.type,
                 sort:this.data.sort,
                 pagesize: 6,
                 p: this.data.page,
-            },
-            success: (res) => {
-                if (res.data.status == 1) {
-                    if(res.data.data.length<6){
-                        this.setData({
-                            noMore:true
-                        })
-                    }else{
-                        this.setData({
-                            noMore:false
-                        })
-                    }
-                    var _proLists = this.data.proLists;
-                    for (var i = 0; i < res.data.data.prolist.length; i++) {
-                        _proLists.push(res.data.data.prolist[i]);
-                    }
-                    this.setData({
-                        proLists: _proLists
-                    })
-                    // 隐藏加载框
-                    setTimeout(()=>{
-                        wx.hideLoading()
-                    },500)
-
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
             }
+        },res=>{
+            if(res.data.data.length<6){
+                this.setData({
+                    noMore:true
+                })
+            }else{
+                this.setData({
+                    noMore:false
+                })
+            }
+            var _proLists = this.data.proLists;
+            for (var i = 0; i < res.data.data.prolist.length; i++) {
+                _proLists.push(res.data.data.prolist[i]);
+            }
+            this.setData({
+                proLists: _proLists
+            })
+            // 隐藏加载框
+            setTimeout(()=>{
+                wx.hideLoading()
+            },500)
         });
     },
     //上拉加载

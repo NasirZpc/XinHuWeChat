@@ -37,37 +37,24 @@ Page({
         })
         var that = this
         //店铺列表
-        wx.request({
-            url: app.baseUrl + '/index.php/Api/Shop/getshop',
-            method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            data: {
+        app.wxRequest({
+            method:'POST',
+            url:'index.php/Api/Shop/getshop',
+            data:{
                 token:app.globalData.token,
                 shopid:this.data.shopid
-            },
-            success: (res) => {
-                if (res.data.status == 1) {
-                    this.setData({
-                        storeDetail: res.data.data
-                    })
-                    wx.setNavigationBarTitle({
-                        title: res.data.data.shopname
-                    })
-                    WxParse.wxParse('article', 'html', res.data.data.shopcontent, that,5)
-                    setTimeout(()=>{
-                        wx.hideLoading()
-                    },500)
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
             }
+        },res=>{
+            this.setData({
+                storeDetail: res.data.data
+            })
+            wx.setNavigationBarTitle({
+                title: res.data.data.shopname
+            })
+            WxParse.wxParse('article', 'html', res.data.data.shopcontent, that,5)
+            setTimeout(()=>{
+                wx.hideLoading()
+            },500)
         });
     },
     //商铺内商品列表
@@ -75,51 +62,38 @@ Page({
         wx.showLoading({
             title: '玩命加载中',
         })
-        wx.request({
-            url: app.baseUrl + '/index.php/Product/shoppro',
-            method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            data: {
+        app.wxRequest({
+            method:'POST',
+            url:'index.php/Product/shoppro',
+            data:{
                 shopid:this.data.shopid,
                 sort:this.data.sort,
                 pagesize: 6,
                 p: this.data.page,
                 shopcatid:'',
-            },
-            success: (res) => {
-                if (res.data.status == 1) {
-                    if(res.data.data.length<6){
-                        this.setData({
-                            noMore:true
-                        })
-                    }else{
-                        this.setData({
-                            noMore:false
-                        })
-                    }
-                    var _shopProLists = this.data.shopProLists;
-                    for (var i = 0; i < res.data.data.length; i++) {
-                        _shopProLists.push(res.data.data[i]);
-                    }
-                    this.setData({
-                        shopProLists: _shopProLists
-                    })
-                    // 隐藏加载框
-                    setTimeout(()=>{
-                        wx.hideLoading()
-                    },500)
-
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
             }
+        },res=>{
+            if(res.data.data.length<6){
+                this.setData({
+                    noMore:true
+                })
+            }else{
+                this.setData({
+                    noMore:false
+                })
+            }
+            var _shopProLists = this.data.shopProLists;
+            for (var i = 0; i < res.data.data.length; i++) {
+                _shopProLists.push(res.data.data[i]);
+            }
+            this.setData({
+                shopProLists: _shopProLists
+            })
+            // 隐藏加载框
+            setTimeout(()=>{
+                wx.hideLoading()
+            },500)
+
         });
     },
     //上拉加载

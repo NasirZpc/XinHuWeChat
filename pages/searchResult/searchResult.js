@@ -93,99 +93,71 @@ Page({
         wx.showLoading({
             title: '玩命加载中',
         })
-        wx.request({
-            url: app.baseUrl + 'index.php/Api/Product/getlist',
-            method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            data: {
+        app.wxRequest({
+            method:'POST',
+            url:'index.php/Api/Product/getlist',
+            data:{
                 productname:this.data.searchText,
                 sort:this.data.sort,
                 pagesize: 6,
                 p: this.data.goodsPage
-            },
-            success: (res) => {
-                if (res.data.status == 1) {
-                    if(res.data.data.prolist.length<6){
-                        this.setData({
-                            noMorePro:true
-                        })
-                    }else{
-                        this.setData({
-                            noMorePro:false
-                        })
-                    }
-                    var _goodsLists = this.data.goodsLists;
-                    for (var i = 0; i < res.data.data.prolist.length; i++) {
-                        _goodsLists.push(res.data.data.prolist[i]);
-                    }
-                    this.setData({
-                        goodsLists: _goodsLists
-                    })
-                    // 隐藏加载框
-                    setTimeout(()=>{
-                        wx.hideLoading()
-                    },500)
-
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
             }
+        },res=>{
+            if(res.data.data.prolist.length<6){
+                this.setData({
+                    noMorePro:true
+                })
+            }else{
+                this.setData({
+                    noMorePro:false
+                })
+            }
+            var _goodsLists = this.data.goodsLists;
+            for (var i = 0; i < res.data.data.prolist.length; i++) {
+                _goodsLists.push(res.data.data.prolist[i]);
+            }
+            this.setData({
+                goodsLists: _goodsLists
+            })
+            // 隐藏加载框
+            setTimeout(()=>{
+                wx.hideLoading()
+            },500)
         });
     },
     storeListsFunc(){
         wx.showLoading({
             title: '玩命加载中',
         })
-        wx.request({
-            url: app.baseUrl + 'index.php/Api/Shop/searchshop',
-            method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded' // 默认值
-            },
-            data: {
+        app.wxRequest({
+            method:'POST',
+            url:'index.php/Api/Shop/searchshop',
+            data:{
                 shopname:this.data.searchText,
                 pagesize:6,
                 p:this.data.storePage
-            },
-            success: (res) => {
-                if (res.data.status == 1) {
-                    if(res.data.data.length<6){
-                        this.setData({
-                            noMoreStore:true
-                        })
-                    }else{
-                        this.setData({
-                            noMoreStore:false
-                        })
-                    }
-                    var _storeLists = this.data.storeLists;
-                    for (var i = 0; i < res.data.data.length; i++) {
-                        _storeLists.push(res.data.data[i]);
-                    }
-                    this.setData({
-                        storeLists: _storeLists
-                    })
-                    // 隐藏加载框
-                    setTimeout(()=>{
-                        wx.hideLoading()
-                    },500)
-
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
             }
+        },res=>{
+            if(res.data.data.length<6){
+                this.setData({
+                    noMoreStore:true
+                })
+            }else{
+                this.setData({
+                    noMoreStore:false
+                })
+            }
+            var _storeLists = this.data.storeLists;
+            for (var i = 0; i < res.data.data.length; i++) {
+                _storeLists.push(res.data.data[i]);
+            }
+            this.setData({
+                storeLists: _storeLists
+            })
+            // 隐藏加载框
+            setTimeout(()=>{
+                wx.hideLoading()
+            },500)
         });
     },
     onReachBottom() {

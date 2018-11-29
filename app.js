@@ -1,3 +1,4 @@
+import touch from './utils/touch.js'
 App({
     onLaunch: function() {
 
@@ -6,6 +7,9 @@ App({
         userInfo: wx.getStorageSync("userInfo") || '',
         token: wx.getStorageSync("token") || '',
     },
+
+    touch: new touch(),
+
     isNull: function(str) {
         var regu = "^[ ]+$";
         var re = new RegExp(regu);
@@ -91,11 +95,59 @@ App({
                     })
                 }
             },
-            fail(res) {
-
-            }
+            fail(res) {}
         })
-
+    },
+    //请求的共用方法
+    wxRequest(config,callBack){
+        if(config.method == "GET"){
+            wx.request({
+                url: this.baseUrl + config.url,
+                method: "GET",
+                success: (res) => {
+                    if (res.data.status == 1) {
+                        callBack(res)
+                        setTimeout(()=>{
+                            wx.hideLoading()
+                        },500)
+                    } else {
+                        setTimeout(()=>{
+                            wx.hideLoading()
+                        },500)
+                        wx.showToast({
+                            title: res.data.Message,
+                            duration: 2500,
+                            icon: 'none',
+                            mask: true
+                        })
+                    }
+                }
+            });
+        }else if(config.method=="POST"){
+            wx.request({
+                url: this.baseUrl + config.url,
+                method: "POST",
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded'
+                },
+                data: config.data,
+                success: (res) => {
+                    if (res.data.status == 1) {
+                        callBack(res)
+                    } else {
+                        wx.showToast({
+                            title: res.data.Message,
+                            duration: 2500,
+                            icon: 'none',
+                            mask: true
+                        })
+                    }
+                    setTimeout(()=>{
+                        wx.hideLoading()
+                    },500)
+                }
+            });
+        }
     },
     //baseUrl
     baseUrl: "https://testapi.xinhushangcheng.com/"

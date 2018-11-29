@@ -34,66 +34,37 @@ Page({
             isactivity : option.isactivity
         })
         //获取商品详情
-        wx.request({
-            url: app.baseUrl + '/index.php/Api/Product/getprodetail',
-            method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            data: {
+        app.wxRequest({
+            method:'POST',
+            url:'index.php/Api/Product/getprodetail',
+            data:{
                 proid: this.data.proid,
                 token:app.globalData.token,
                 isactivity:this.data.isactivity,
-            },
-            success: (res) => {
-                if (res.data.status == 1) {
-                    this.setData({
-                        proDetail: res.data.data,
-                    })
-                    WxParse.wxParse('article', 'html', res.data.data.prodetail.imagetext, that,5)
-                    wx.setNavigationBarTitle({
-                        title: res.data.data.prodetail.productname
-                    })
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
-                // 隐藏加载框
-                setTimeout(()=>{
-                    wx.hideLoading()
-                },500)
             }
+        },res=>{
+            this.setData({
+                proDetail: res.data.data,
+            })
+            WxParse.wxParse('article', 'html', res.data.data.prodetail.imagetext, that,5)
+            wx.setNavigationBarTitle({
+                title: res.data.data.prodetail.productname
+            })
         });
+
         //获取商品评论
-        wx.request({
-            url: app.baseUrl + '/index.php/Api/Product/getprocomment',
-            method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            data: {
+        app.wxRequest({
+            method:'POST',
+            url:'index.php/Api/Product/getprocomment',
+            data:{
                 proid: this.data.proid,
                 token:app.globalData.token,
                 pagesize:3,
-            },
-            success: (res) => {
-                if (res.data.status == 1) {
-                    this.setData({
-                        proComment: res.data.data,
-                    })
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
             }
+        },res=>{
+            this.setData({
+                proComment: res.data.data,
+            })
         });
         this.guesslikeFunc()
     },
@@ -105,49 +76,35 @@ Page({
     },
     guesslikeFunc(){
         //猜你喜欢
-        wx.request({
-            url: app.baseUrl + 'index.php/User/guesslike',
-            method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            data: {
+        app.wxRequest({
+            method:'POST',
+            url:'index.php/User/guesslike',
+            data:{
                 token: app.globalData.token,
                 pagesize: 6,
                 p: this.data.page
-            },
-            success: (res) => {
-                if (res.data.status == 1) {
-                    if(res.data.data.guesslist.length<6){
-                        this.setData({
-                            noMore:true
-                        })
-                    }else{
-                        this.setData({
-                            noMore:false
-                        })
-                    }
-                    var _guesslikeLists = this.data.guesslikeLists;
-                    for (var i = 0; i < res.data.data.guesslist.length; i++) {
-                        _guesslikeLists.push(res.data.data.guesslist[i]);
-                    }
-                    this.setData({
-                        guesslikeLists: _guesslikeLists
-                    })
-                    // 隐藏加载框
-                    setTimeout(()=>{
-                        wx.hideLoading()
-                    },500)
-
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
             }
+        },res=>{
+            if(res.data.data.guesslist.length<6){
+                this.setData({
+                    noMore:true
+                })
+            }else{
+                this.setData({
+                    noMore:false
+                })
+            }
+            var _guesslikeLists = this.data.guesslikeLists;
+            for (var i = 0; i < res.data.data.guesslist.length; i++) {
+                _guesslikeLists.push(res.data.data.guesslist[i]);
+            }
+            this.setData({
+                guesslikeLists: _guesslikeLists
+            })
+            // 隐藏加载框
+            setTimeout(()=>{
+                wx.hideLoading()
+            },500)
         });
     },
     /**

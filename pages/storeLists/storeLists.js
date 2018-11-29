@@ -14,48 +14,35 @@ Page({
             title: '玩命加载中',
         })
         //店铺列表
-        wx.request({
-            url: app.baseUrl + 'index.php/Api/Shop/shoplist',
-            method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            data: {
+        app.wxRequest({
+            method:'POST',
+            url:'index.php/Api/Shop/shoplist',
+            data:{
                 isindex: 0,
                 pagesize: 6,
                 p:this.data.page,
-            },
-            success: (res) => {
-                if (res.data.status == 1) {
-                    if(res.data.data.length<6){
-                        this.setData({
-                            noMore:true
-                        })
-                    }else{
-                        this.setData({
-                            noMore:false
-                        })
-                    }
-                    var _storeLists = this.data.storeLists;
-                    for (var i = 0; i < res.data.data.length; i++) {
-                        _storeLists.push(res.data.data[i]);
-                    }
-                    this.setData({
-                        storeLists: _storeLists
-                    })
-                    // 隐藏加载框
-                    setTimeout(()=>{
-                        wx.hideLoading()
-                    },500)
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
             }
+        },res=>{
+            if(res.data.data.length<6){
+                this.setData({
+                    noMore:true
+                })
+            }else{
+                this.setData({
+                    noMore:false
+                })
+            }
+            var _storeLists = this.data.storeLists;
+            for (var i = 0; i < res.data.data.length; i++) {
+                _storeLists.push(res.data.data[i]);
+            }
+            this.setData({
+                storeLists: _storeLists
+            })
+            // 隐藏加载框
+            setTimeout(()=>{
+                wx.hideLoading()
+            },500)
         });
     },
     //上拉加载

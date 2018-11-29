@@ -27,52 +27,38 @@ Page({
             title: '玩命加载中',
         })
         //宝贝列表
-        wx.request({
-            url: app.baseUrl + '/index.php/Product/shoppro',
-            method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            data: {
+        app.wxRequest({
+            method:'POST',
+            url:'index.php/Product/shoppro',
+            data:{
                 shopid:this.data.shopid,
                 sort:this.data.sort,
                 productname:this.data.productname,
                 pagesize: 6,
                 p: this.data.page,
                 shopcatid:this.data.shopcatid
-            },
-            success: (res) => {
-                if (res.data.status == 1) {
-                    if(res.data.data.length<6){
-                        this.setData({
-                            noMore:true
-                        })
-                    }else{
-                        this.setData({
-                            noMore:false
-                        })
-                    }
-                    var _proLists = this.data.proLists;
-                    for (var i = 0; i < res.data.data.length; i++) {
-                        _proLists.push(res.data.data[i]);
-                    }
-                    this.setData({
-                        proLists: _proLists
-                    })
-                    // 隐藏加载框
-                    setTimeout(()=>{
-                        wx.hideLoading()
-                    },500)
-
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
             }
+        },res=>{
+            if(res.data.data.length<6){
+                this.setData({
+                    noMore:true
+                })
+            }else{
+                this.setData({
+                    noMore:false
+                })
+            }
+            var _proLists = this.data.proLists;
+            for (var i = 0; i < res.data.data.length; i++) {
+                _proLists.push(res.data.data[i]);
+            }
+            this.setData({
+                proLists: _proLists
+            })
+            // 隐藏加载框
+            setTimeout(()=>{
+                wx.hideLoading()
+            },500)
         });
     },
     onReachBottom() {

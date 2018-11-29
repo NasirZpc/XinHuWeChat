@@ -13,162 +13,95 @@ Page({
     },
     onLoad() {
         //获取轮播图
-        wx.request({
-            url: app.baseUrl + 'index.php/Api/Product/getbanner',
-            method: "GET",
-            success: (res) => {
-                if (res.data.status == 1) {
-                    this.setData({
-                        banners: res.data.data.banner
-                    })
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
-            }
+        app.wxRequest({
+            method:'GET',
+            url:'index.php/Api/Product/getbanner',
+        },res =>{
+            this.setData({
+                banners:res.data.data.banner
+            })
         });
         //获取快速入口
-        wx.request({
-            url: app.baseUrl + 'index.php/Api/Product/gethomeactivity',
-            method: "GET",
-            success: (res) => {
-                if (res.data.status == 1) {
-                    this.setData({
-                        fastEnterLists: res.data.data
-                    })
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
-            }
+        app.wxRequest({
+            method:'GET',
+            url:'index.php/Api/Product/gethomeactivity',
+        },res => {
+            this.setData({
+                fastEnterLists: res.data.data
+            })
         });
+
         //获取快速入口2
-        wx.request({
-            url: app.baseUrl + 'index.php/Product/getspecial',
-            method: "GET",
-            success: (res) => {
-                if (res.data.status == 1) {
-                    this.setData({
-                        fastEnterLists2: res.data.data.special
-                    })
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
-            }
+        app.wxRequest({
+            method:'GET',
+            url:'index.php/Product/getspecial',
+        },res=>{
+            this.setData({
+                fastEnterLists2: res.data.data.special
+            })
         });
+
         //大家都在买
-        wx.request({
-            url: app.baseUrl + 'index.php/Product/evboybuy',
-            method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            data: {
+        app.wxRequest({
+            method:'POST',
+            url:'index.php/Product/evboybuy',
+            data:{
                 pagesize: 4,
                 p: 1
-            },
-            success: (res) => {
-                if (res.data.status == 1) {
-                    this.setData({
-                        evboybuyLists: res.data.data
-                    })
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
             }
+        },res=>{
+            this.setData({
+                evboybuyLists: res.data.data
+            })
         });
+
         //店铺推荐
-        wx.request({
-            url: app.baseUrl + 'index.php/Api/Shop/shoplist',
-            method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            data: {
+        app.wxRequest({
+            method:'POST',
+            url:'index.php/Api/Shop/shoplist',
+            data:{
                 isindex: 1,
                 pagesize: 4,
                 p: 1
-            },
-            success: (res) => {
-                if (res.data.status == 1) {
-                    this.setData({
-                        recommendStoreLists: res.data.data
-                    })
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
             }
+        },res=>{
+            this.setData({
+                recommendStoreLists: res.data.data
+            })
         });
         this.guesslikeFunc()
     },
     guesslikeFunc(){
         //猜你喜欢
-        wx.request({
-            url: app.baseUrl + 'index.php/User/guesslike',
-            method: "POST",
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            data: {
+        app.wxRequest({
+            method:'POST',
+            url:'index.php/User/guesslike',
+            data:{
                 token: app.globalData.token,
                 pagesize: 6,
                 p: this.data.page
-            },
-            success: (res) => {
-                if (res.data.status == 1) {
-                    if(res.data.data.guesslist.length<6){
-                        this.setData({
-                            noMore:true
-                        })
-                    }else{
-                        this.setData({
-                            noMore:false
-                        })
-                    }
-                    var _guesslikeLists = this.data.guesslikeLists;
-                    for (var i = 0; i < res.data.data.guesslist.length; i++) {
-                        _guesslikeLists.push(res.data.data.guesslist[i]);
-                    }
-                    this.setData({
-                        guesslikeLists: _guesslikeLists
-                    })
-                    // 隐藏加载框
-                    setTimeout(()=>{
-                        wx.hideLoading()
-                    },500)
-
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        duration: 2500,
-                        icon: 'none',
-                        mask: true
-                    })
-                }
             }
+        },res=>{
+            if(res.data.data.guesslist.length<6){
+                this.setData({
+                    noMore:true
+                })
+            }else{
+                this.setData({
+                    noMore:false
+                })
+            }
+            var _guesslikeLists = this.data.guesslikeLists;
+            for (var i = 0; i < res.data.data.guesslist.length; i++) {
+                _guesslikeLists.push(res.data.data.guesslist[i]);
+            }
+            this.setData({
+                guesslikeLists: _guesslikeLists
+            })
+            // 隐藏加载框
+            setTimeout(()=>{
+                wx.hideLoading()
+            },500)
         });
     },
     /**
