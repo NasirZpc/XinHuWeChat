@@ -1,6 +1,6 @@
-<view class="bgO tc Cf fs26 fix ignoreMsg" bindtap="ignoreMsg" style="height:60rpx;line-height:60rpx;">忽略未读</view>
+<view class="bgO tc Cf fs30 fix ignoreMsg" bindtap="ignoreMsg" style="height:60rpx;line-height:60rpx;">忽略未读</view>
 <view class="sysMsgLists" style="padding-top:60rpx;">
-    <view class="sysMsgItem mb20 {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{items}}" wx:for-index="index" wx:key="key" data-id="{{item.id}}" bindtap="goMsgDetail" bindtouchstart="touchstart" bindtouchmove="touchmove">
+    <view class="sysMsgItem mb20 {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{items}}" wx:for-index="index" data-index="{{index}}" wx:key="key" data-id="{{item.id}}" bindtap="goMsgDetail" bindtouchstart="touchstart" bindtouchmove="touchmove">
         <view class="bgF p15 content">
             <view class="clearfix mb10 rel">
                 <view class="icon i-sysMsg fl mr10"></view>
@@ -13,8 +13,8 @@
                 <view class="fr C3 fs24">查看详情</view>
             </view>
         </view>
-        <view class="del" catchtap="del" data-index="{{index}}">
-            <view class="icon i-delete"></view>
+        <view class="del" catchtap="del" data-index="{{index}}" data-id="{{item.id}}">
+            <view class="icon i-touchDel"></view>
         </view>
     </view>
 </view>

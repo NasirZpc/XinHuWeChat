@@ -15,13 +15,13 @@
 .sysMsgItem{
     display: flex;
     justify-content: space-between;
-    /* overflow: hidden; */
+    overflow: hidden;
     width: 100%;
 }
 
 .content {
     width: 100%;
-    
+
     margin-right:0;
     -webkit-transition: all 0.4s;
     transition: all 0.4s;

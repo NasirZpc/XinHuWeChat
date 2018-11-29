@@ -1,9 +1,7 @@
 var startX
 var startY
 class touch {
-
     constructor() {}
-
     _touchstart(e, items) {
         //开始触摸时 重置所有删除
         items.forEach(function(v, i) {
@@ -35,7 +33,7 @@ class touch {
             if (Math.abs(angle) > 30) return;
             if (i == index) {
                 if (touchMoveX > startX) //右滑
-                    v.isTouchMove = false
+                    v.isTouchMove = false;
                 else //左滑
                     v.isTouchMove = true
             }

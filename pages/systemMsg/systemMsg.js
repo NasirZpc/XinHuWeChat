@@ -5,6 +5,7 @@ Page({
         items:[],
         page:1,
         noMore:false,
+        id:'',
     },
     onLoad() {
         //获取系统消息列表
@@ -50,7 +51,6 @@ Page({
     },
     onReachBottom() {
         if(!this.data.noMore){
-            var that = this;
             // 显示加载图标
             wx.showLoading({
                 title: '玩命加载中',
@@ -68,14 +68,21 @@ Page({
             method:'POST',
             url:'index.php/Api/User/neglectmessage',
             data:{
+                id:this.data.id,
                 token:app.globalData.token,
             }
         },res=>{
-            this.setData({
-                sysMsgLists:[],
-                page:1
-            })
-            this.getSysMsgLists()
+            if(!this.data.id){
+                this.setData({
+                    items:[],
+                    page:1
+                })
+                this.getSysMsgLists()
+            }else{
+                this.setData({
+                    id:''
+                })
+            }
         });
     },
     //跳转
@@ -84,7 +91,7 @@ Page({
            url: "../systemMsgDetail/systemMsgDetail?id="+e.currentTarget.dataset.id
         });
     },
-    touchstart: function(e) {
+    touchstart(e) {
         //开始触摸时 重置所有删除
         let data = app.touch._touchstart(e, this.data.items)
         this.setData({
@@ -92,7 +99,7 @@ Page({
         })
     },
     //滑动事件处理
-    touchmove: function(e) {
+    touchmove(e) {
         let data = app.touch._touchmove(e, this.data.items)
         this.setData({
             items: data
@@ -103,13 +110,16 @@ Page({
         wx.showModal({
             title: '提示',
             content: '确认要删除此条信息么？',
-            success: function(res) {
+            success: res => {
                 if (res.confirm) {
-                    console.log('用户点击确定')
-                    that.data.items.splice(e.currentTarget.dataset.index, 1)
-                    that.setData({
-                        items: that.data.items
+                    this.data.items.splice(e.currentTarget.dataset.index, 1)
+                    this.setData({
+                        items: this.data.items
                     })
+                    this.setData({
+                        id:e.currentTarget.dataset.id
+                    })
+                    this.ignoreMsg()
                 } else if (res.cancel) {
                     console.log('用户点击取消')
                 }

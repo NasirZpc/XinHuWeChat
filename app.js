@@ -15,6 +15,7 @@ App({
         var re = new RegExp(regu);
         return re.test(str);
     },
+    
     //授权登录并监测登录状态
     userLogin(e) {
         var that = this;
